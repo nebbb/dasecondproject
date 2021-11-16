@@ -1,0 +1,11 @@
+.login__page-container {
+  display: flex;
+  align-items: center;
+}
+.login--left-side {
+  background-image: url("https://abs.twimg.com/sticky/illustrations/lohp_en_1302x955.png");
+  background-size: cover;
+  background-position: center;
+}
+.login--right-side {
+}

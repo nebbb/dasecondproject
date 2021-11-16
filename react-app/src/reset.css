@@ -1,0 +1,25 @@
+/* RESET STYLES */
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+/* @font-face {
+  font-family: "Whitney Medium";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Whitney Medium"), url("./fonts/whitneymedium.woff") format("woff");
+} */
+
+body {
+  font-family: sans-serif;
+}
