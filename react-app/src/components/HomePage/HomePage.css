@@ -1,0 +1,5 @@
+.home__page--container {
+  max-width: 125rem;
+  display: flex;
+  margin: 0 auto;
+}

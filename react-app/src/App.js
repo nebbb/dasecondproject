@@ -8,6 +8,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import LoginPage from "./components/LoginPage";
+import HomePage from "./components/HomePage";
 import { authenticate } from "./store/session";
 
 import "./reset.css";
@@ -35,7 +36,7 @@ function App() {
           <LoginForm />
         </Route>
         <Route path="/logintest" exact={true}>
-          <LoginPage />
+          <HomePage />
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm />

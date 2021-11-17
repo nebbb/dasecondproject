@@ -1,0 +1,23 @@
+.search__bar--container {
+  display: flex;
+  align-items: center;
+  background: #253341;
+  padding: 1.4rem 1.8rem;
+  border-radius: 100px;
+}
+.search__bar--container input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding-left: 1rem;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1.5rem;
+}
+.search__bar--container input::placeholder {
+  color: rgb(136, 153, 166);
+}
+.sdnwe-2 {
+  width: 2rem !important;
+}

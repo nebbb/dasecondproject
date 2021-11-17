@@ -1,0 +1,61 @@
+.left_side_bar-container {
+  flex: 1;
+  max-width: 27.5rem;
+}
+.left-side-bar--nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+a span svg,
+.left_side_bar-container div svg {
+  height: 3rem !important;
+  width: 3rem !important;
+  fill: #fff !important;
+}
+.left-side-bar--nav a {
+  text-decoration: none;
+}
+.left-side-bar--nav a span {
+  color: #fff;
+  font-size: 1.9rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: max-content;
+  border-radius: 100px;
+  padding: 1.5rem 1rem;
+  padding-right: 2rem;
+}
+.left_side_bar-container button {
+  background-color: #1d9bf0;
+  border: none;
+  outline: none;
+  font-size: 1.8rem;
+  font-family: inherit;
+  cursor: pointer;
+  width: 90%;
+  color: #fff;
+  padding: 1.4rem 0;
+  border-radius: 100px;
+  margin-top: 3rem;
+  font-weight: 600;
+}
+.left_side_bar-container div {
+  margin: 1.8rem 0;
+  padding: 1rem;
+  width: max-content;
+  cursor: pointer;
+  border-radius: 100px;
+  margin-bottom: 0.8rem;
+}
+.left_side_bar-container div:hover {
+  background-color: rgb(21, 44, 63);
+}
+.left-side-bar--nav a:hover > span {
+  background-color: rgb(44, 54, 64);
+}
+.active--link {
+  font-weight: 600;
+}

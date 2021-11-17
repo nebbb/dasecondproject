@@ -1,0 +1,87 @@
+.home__tweets--container {
+  width: 59.8rem;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid rgb(56, 68, 77);
+  border-right: 1px solid rgb(56, 68, 77);
+  margin-right: 3rem;
+}
+.home__tweets--create {
+  min-height: 12rem;
+  display: flex;
+  padding: 1rem 1.25rem;
+  gap: 1rem;
+}
+.home__tweet--profile {
+  width: 4.8rem;
+  height: 4.8rem;
+}
+.home__tweet--profile-pic {
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+}
+.home__tweets--right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.home__tweets--right--top {
+  flex: 1;
+}
+.home__tweets--right--bottom {
+  display: flex;
+  justify-content: space-between;
+}
+.home__tweet--buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.home__tweet--create--input {
+  border: none;
+  outline: none;
+  background: none;
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  font-family: inherit;
+  font-size: 2rem;
+}
+.home__tweet--create--input::placeholder {
+  color: rgb(136, 153, 166);
+  font-size: 2rem;
+}
+.home__create--btn {
+  background: none;
+  outline: none;
+  border: none;
+  color: #828f95;
+  font-family: inherit;
+  font-size: 1.5rem;
+  background-color: #195d8d;
+  border-radius: 100px;
+  padding: 1rem 1.6rem;
+  font-weight: 600;
+}
+.home__create--btn--active {
+  background: none;
+  outline: none;
+  border: none;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1.5rem;
+  border-radius: 100px;
+  padding: 1rem 1.6rem;
+  background-color: #1d9bf0;
+  cursor: pointer;
+  font-weight: 600;
+}
+.home__tweet__btn--svg {
+  cursor: pointer;
+}
+.home__tweet__btn--svg svg {
+  width: 2rem;
+  height: 2rem;
+  fill: rgb(29, 155, 240);
+}

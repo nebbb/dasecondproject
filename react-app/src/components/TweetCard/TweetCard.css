@@ -1,0 +1,98 @@
+.tweet__card--container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  background: #15202b;
+  color: #fff;
+  padding: 1rem 1.25rem;
+  border-top: 1px solid rgb(56, 68, 77);
+  cursor: pointer;
+  transition: 150ms background;
+}
+.tweet__card--container:hover {
+  background: rgb(28, 39, 50);
+}
+.tweet__card--top {
+  display: flex;
+  gap: 1rem;
+}
+.tweet__card--profile-pic {
+  width: 4.8rem;
+  height: 4.8rem;
+  cursor: pointer;
+}
+.tweet__card--profile-img {
+  height: inherit;
+  width: inherit;
+  border-radius: 50%;
+}
+.tweet__card--content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+  justify-content: center;
+}
+.tweet__card--content-top {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.tweet__card--details {
+  display: flex;
+  align-items: center;
+  width: 60%;
+  justify-content: space-between;
+  margin-left: 5.4rem;
+}
+.r-4qtqp9 {
+  width: 1.6rem;
+  fill: rgb(136, 153, 166);
+}
+.r-4qtqp9.r-4qtqp09 {
+  fill: rgb(249, 24, 128);
+}
+.tweet__card--bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.tweet__card--image {
+  margin-left: 5.4rem;
+}
+.tweet__card--tweet-img {
+  border-radius: 1.5rem;
+  cursor: pointer;
+  margin: 0.6rem 0;
+  border: 1px solid rgb(56, 68, 77);
+  max-width: 50.4rem;
+  max-height: 73rem;
+}
+.tweet__username {
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.tweet__username:hover {
+  text-decoration: underline;
+}
+.tweet__created {
+  font-size: 1.5rem;
+  color: rgb(136, 153, 166);
+}
+.tweet__content {
+  font-size: 1.4rem;
+}
+.tweet__dot {
+  font-size: 1.8rem;
+  color: rgb(136, 153, 166);
+}
+.tweet__icon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.tweet__icon span {
+  font-size: 1.2rem;
+}
