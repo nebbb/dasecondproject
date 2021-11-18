@@ -1,6 +1,11 @@
 .left_side_bar-container {
   flex: 1;
   max-width: 27.5rem;
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+  position: sticky;
+  top: 0;
 }
 .left-side-bar--nav {
   display: flex;
@@ -25,7 +30,7 @@ a span svg,
   gap: 1rem;
   width: max-content;
   border-radius: 100px;
-  padding: 1.5rem 1rem;
+  padding: 1.4rem 1rem;
   padding-right: 2rem;
 }
 .left_side_bar-container button {
@@ -43,7 +48,6 @@ a span svg,
   font-weight: 600;
 }
 .left_side_bar-container div {
-  margin: 1.8rem 0;
   padding: 1rem;
   width: max-content;
   cursor: pointer;
@@ -57,5 +61,33 @@ a span svg,
   background-color: rgb(44, 54, 64);
 }
 .active--link {
+  font-weight: 800;
+}
+.left-side-bar--nav a span {
+  font-weight: inherit;
+}
+.footer__profile-pic {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+.leftside__footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: auto;
+  margin-bottom: 3rem;
+  padding: 1.2rem 2rem;
+  border-radius: 100px;
+  width: 90%;
+  cursor: pointer;
+  transition: 150ms background-color;
+}
+.leftside__footer:hover {
+  background-color: rgb(44, 54, 64);
+}
+.footer__right-side {
+  font-size: 1.5rem;
   font-weight: 600;
+  color: #fff;
 }

@@ -35,9 +35,6 @@ function App() {
         <Route path="/login" exact={true}>
           <LoginForm />
         </Route>
-        <Route path="/logintest" exact={true}>
-          <HomePage />
-        </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
@@ -48,7 +45,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
-          <h1>My Home Page</h1>
+          <HomePage />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

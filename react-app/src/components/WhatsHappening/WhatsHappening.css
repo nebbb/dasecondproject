@@ -1,0 +1,9 @@
+.whats__happening--container {
+  background: #192734;
+  padding: 1rem;
+  border-radius: 1.6rem;
+}
+.whats__happening--container h3 {
+  color: #fff;
+  font-size: 2rem;
+}

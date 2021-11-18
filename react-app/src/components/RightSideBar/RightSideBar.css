@@ -1,4 +1,9 @@
 .right-side-bar-container {
   width: 34.8rem;
-  margin-top: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  max-height: 100vh;
+  position: sticky;
+  top: 0;
 }

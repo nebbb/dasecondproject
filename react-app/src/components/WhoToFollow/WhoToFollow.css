@@ -1,0 +1,29 @@
+.who-to-follow__container {
+  background: #192734;
+  border-radius: 1.6rem;
+  overflow: hidden;
+  padding-top: 1.4rem;
+}
+.who-to-follow__container h3 {
+  color: #fff;
+  font-size: 2rem;
+  padding-left: 1.4rem;
+}
+.who-to-follow__inner {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.who-to-follow-span {
+  color: rgb(29, 155, 240);
+  padding: 2rem 1.4rem;
+  transition: 150ms background;
+  font-size: 1.5rem;
+  width: 100%;
+  display: block;
+  cursor: pointer;
+  font-weight: 300;
+}
+.who-to-follow-span:hover {
+  background: rgb(32, 46, 58);
+}

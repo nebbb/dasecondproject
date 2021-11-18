@@ -2,8 +2,9 @@
   display: flex;
   align-items: center;
   background: #253341;
-  padding: 1.4rem 1.8rem;
+  padding: 1.3rem 1.8rem;
   border-radius: 100px;
+  margin-top: 1rem;
 }
 .search__bar--container input {
   flex: 1;

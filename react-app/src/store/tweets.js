@@ -1,6 +1,7 @@
 const LOAD = "tweets/LOAD";
 const ADD = "tweets/ADD";
 const REMOVE = "tweets/REMOVE";
+const REMOVE_LIKE = "tweets/REMOVELIKE";
 
 const load = (tweets) => ({
   type: LOAD,
@@ -15,6 +16,11 @@ const add = (tweet) => ({
 const remove = (tweet_id) => ({
   type: REMOVE,
   tweet_id,
+});
+
+const removeLike = (data) => ({
+  type: REMOVE_LIKE,
+  data,
 });
 
 export const loadHomeTweets = () => async (dispatch) => {
@@ -58,6 +64,35 @@ export const updateTweet = (formData) => async (dispatch) => {
   }
 };
 
+export const likeATweet = (formData) => async (dispatch) => {
+  const response = await fetch(`/api/likes/add`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  });
+
+  if (response.ok) {
+    const tweet = await response.json();
+    dispatch(add(tweet["tweet"]));
+  }
+};
+
+export const removeLikedTweet = (data) => async (dispatch) => {
+  const response = await fetch(`/api/likes/delete/${data["like_id"]}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (response.ok) {
+    const like_id = await response.json();
+    dispatch(removeLike(data));
+  }
+};
+
 export const removeTweet = (tweet_id) => async (dispatch) => {
   const response = await fetch(`/api/tweets/delete/${tweet_id}`, {
     method: "DELETE",
@@ -86,6 +121,16 @@ const tweetsReducer = (state = {}, action) => {
       const tweets = { ...state };
       delete tweets[action.tweet_id];
       return tweets;
+    case REMOVE_LIKE:
+      function getLikeObject(object) {
+        return object["id"] === action.data.like_id;
+      }
+      const oldTweetArray = { ...state };
+      const oldTweet = oldTweetArray[action.data.tweet_id];
+      if (oldTweet["like_count"] > 0) oldTweet["like_count"]--;
+      const index = oldTweet["like_array"].findIndex(getLikeObject);
+      oldTweet["like_array"].splice(index, 1);
+      return { ...state, [action.data.tweet_id]: oldTweet };
     default:
       return state;
   }

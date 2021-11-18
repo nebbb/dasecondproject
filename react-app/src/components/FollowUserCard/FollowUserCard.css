@@ -1,0 +1,43 @@
+.follow__user-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 150ms background;
+  padding: 1rem 1.4rem;
+  cursor: pointer;
+  user-select: none;
+}
+.follow__user-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.follow__card-profile-pic {
+  width: 4.8rem;
+  height: 4.8rem;
+  border-radius: 50%;
+}
+.follow__card-profile-name {
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 600;
+}
+.follow__card-btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: rgb(239, 243, 244);
+  color: #000;
+  font-family: inherit;
+  font-size: 1.4rem;
+  padding: 0.7rem 1.6rem;
+  border-radius: 100px;
+  font-weight: 500;
+  transition: 150ms background;
+}
+.follow__card-btn:hover {
+  background: rgb(215, 219, 220);
+}
+.follow__user-card:hover {
+  background: rgb(32, 46, 58);
+}

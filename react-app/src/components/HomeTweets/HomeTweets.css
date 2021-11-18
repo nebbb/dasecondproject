@@ -85,3 +85,24 @@
   height: 2rem;
   fill: rgb(29, 155, 240);
 }
+.home__tweets--home {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(56, 68, 77);
+  background: #15202b;
+  padding: 1.25rem;
+  color: #fff;
+  position: sticky;
+  top: 0;
+}
+.home__tweets--home span {
+  font-size: 2rem;
+  font-weight: 600;
+  user-select: none;
+  letter-spacing: 0.2px;
+}
+.ansda-2 {
+  width: 2rem !important;
+  height: 2rem !important;
+  fill: rgb(239, 243, 244) !important;
+}

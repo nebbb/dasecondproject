@@ -11,7 +11,7 @@ import {
   more,
 } from "./icons";
 
-export default function LeftSideBar() {
+export default function LeftSideBar({ user }) {
   return (
     <div className="left_side_bar-container">
       <div>{twitter}</div>
@@ -36,7 +36,14 @@ export default function LeftSideBar() {
         </NavLink>
       </nav>
       <button>Tweet</button>
-      <footer></footer>
+      <footer className="leftside__footer">
+        <img
+          src={user.profile_pic}
+          alt="profile-pic"
+          className="footer__profile-pic"
+        />
+        <span className="footer__right-side">{`@${user.username}`}</span>
+      </footer>
     </div>
   );
 }
