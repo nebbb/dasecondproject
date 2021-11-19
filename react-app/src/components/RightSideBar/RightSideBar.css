@@ -7,3 +7,15 @@
   position: sticky;
   top: 0;
 }
+.footer-right__side {
+  margin-top: auto;
+  display: block;
+  margin-bottom: 2rem;
+  color: rgb(136, 153, 166);
+  font-size: 1.3rem;
+  user-select: none;
+  cursor: pointer;
+}
+.footer-right__side:hover {
+  text-decoration: underline;
+}

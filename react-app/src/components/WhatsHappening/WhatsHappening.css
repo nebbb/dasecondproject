@@ -1,9 +1,56 @@
 .whats__happening--container {
   background: #192734;
-  padding: 1rem;
   border-radius: 1.6rem;
+  overflow: hidden;
+  padding-top: 2rem;
+  user-select: none;
 }
 .whats__happening--container h3 {
   color: #fff;
   font-size: 2rem;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+.whats__happening--card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  transition: 150ms background;
+  cursor: pointer;
+}
+.whats__happening--card:hover {
+  background: rgb(32, 46, 58);
+}
+.whats__happening--card-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  max-width: 210px;
+}
+.whats__happening--card-left span {
+  font-size: 1.3rem;
+  color: rgb(136, 153, 166);
+}
+.whats__happening--card-left span a {
+  font-size: 1.3rem;
+  color: rgb(29, 155, 240);
+}
+.whats__happening--card-left span a:hover {
+  text-decoration: underline;
+}
+.whats__happening--card-left p {
+  font-size: 1.4rem;
+  color: #fff;
+  font-weight: 600;
+}
+.whats__happening--card-right img {
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1.2rem;
+}
+.whats__happening--card-right {
+  width: 6.8rem;
+  height: 6.8rem;
 }

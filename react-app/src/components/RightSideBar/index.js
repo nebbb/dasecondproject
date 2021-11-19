@@ -10,7 +10,7 @@ export default function RightSideBar({ users }) {
       <SearchBar />
       <WhatsHappening />
       <WhoToFollow users={users} />
-      <span>2021 Twitta, inc</span>
+      <span className="footer-right__side">© 2021 Twitta, Inc.</span>
     </div>
   );
 }

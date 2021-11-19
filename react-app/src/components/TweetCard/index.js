@@ -95,19 +95,21 @@ export default function TweetCard({ tweet, user }) {
             >{`@${tweet["user"]["username"]}`}</span>
             <span className="tweet__dot">·</span>
             <span className="tweet__created">{`${tweet["sent_date"]}`}</span>
-            <button onClick={showDropdown} className="dont-remove">
-              <svg
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                class="dont-remove r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"
-              >
-                <g>
-                  <circle cx="5" cy="12" r="2"></circle>
-                  <circle cx="12" cy="12" r="2"></circle>
-                  <circle cx="19" cy="12" r="2"></circle>
-                </g>
-              </svg>
-            </button>
+            {tweet.user_id === user.id && (
+              <button onClick={showDropdown} className="dont-remove">
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  class="dont-remove r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"
+                >
+                  <g>
+                    <circle cx="5" cy="12" r="2"></circle>
+                    <circle cx="12" cy="12" r="2"></circle>
+                    <circle cx="19" cy="12" r="2"></circle>
+                  </g>
+                </svg>
+              </button>
+            )}
           </div>
           <div className="tweet__card--content-bottom">
             <span className="tweet__content">{tweet["tweet"]}</span>

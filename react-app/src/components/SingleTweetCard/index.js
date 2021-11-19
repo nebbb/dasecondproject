@@ -161,7 +161,7 @@ export default function SingleTweetCard({ tweet, user }) {
         {tweet?.["comment_array"]?.length > 0 &&
           tweet?.["comment_array"]
             .reverse()
-            .map((comment) => <CommentCard comment={comment} />)}
+            .map((comment) => <CommentCard comment={comment} user={user} />)}
       </div>
     </div>
   );
