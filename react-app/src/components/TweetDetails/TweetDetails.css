@@ -1,0 +1,33 @@
+.tweet__details--container {
+  width: 59.8rem;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid rgb(56, 68, 77);
+  border-right: 1px solid rgb(56, 68, 77);
+  margin-right: 3rem;
+}
+.asdsa-p {
+  width: 2rem !important;
+  fill: rgb(239, 243, 244) !important;
+  height: 2rem !important;
+}
+.home__tweets--home--tweet {
+  justify-content: left;
+  align-items: center;
+  gap: 3rem;
+}
+.home__tweets--home--tweet button {
+  border: none;
+  cursor: pointer;
+  border-radius: 100px;
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  transition: background 150ms;
+}
+.home__tweets--home--tweet button:hover {
+  background: rgb(44, 54, 64);
+}

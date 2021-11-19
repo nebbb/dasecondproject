@@ -55,7 +55,7 @@
 .tweet__card--bottom {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 1rem;
 }
 .tweet__card--image {
   margin-left: 5.4rem;
@@ -104,4 +104,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.tweet__card--content-top button {
+  margin-left: auto;
+}
+.tweet__card--content-top form {
+  display: flex;
+  align-items: center;
+}
+.tweet__card--content-top button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background: none;
+  display: flex;
+  align-items: center;
+  padding: 0.6rem;
+  border-radius: 50%;
+  justify-content: center;
+  transition: 150ms background;
+}
+.tweet__card--content-top button:hover {
+  background: rgb(28, 51, 70);
 }

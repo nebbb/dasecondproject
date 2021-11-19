@@ -14,8 +14,20 @@ def get_a_tweet(tweet_id):
     user = User.query.get(tweet_dict["user_id"])
     tweet_dict["user"] = user.to_dict()
 
-    # db.session.query(Like).filter(Like.tweet_id==tweet_id).all()
-    # db.session.query(Comment).filter(Comment.tweet_id==tweet_id).all()
+    comment_array = db.session.query(Comment).filter(Comment.tweet_id==tweet_dict["id"]).all()
+    comment_dict = []
+
+    for comment in comment_array:
+        comm_dict = comment.to_dict()
+        user = User.query.get(comm_dict["user_id"])
+        comm_dict["user"] = user.to_dict()
+        comment_dict.append(comm_dict)
+
+    like_array = db.session.query(Like).filter(Like.tweet_id==tweet_dict["id"]).all()
+    tweet_dict["comment_count"] = len(comment_dict)
+    tweet_dict["like_count"] = len(like_array)
+    tweet_dict["like_array"] = [like.to_dict() for like in like_array]
+    tweet_dict["comment_array"] = comment_dict
 
     return {"tweet": tweet_dict}
 

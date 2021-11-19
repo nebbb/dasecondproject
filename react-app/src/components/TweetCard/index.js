@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import "./TweetCard.css";
-import { likeATweet, removeLikedTweet } from "../../store/tweets";
+import {
+  likeATweet,
+  removeLikedTweet,
+  removeTweet,
+  updateTweet,
+} from "../../store/tweets";
+import { Link } from "react-router-dom";
 
 export default function TweetCard({ tweet, user }) {
+  const history = useHistory();
   const dispatch = useDispatch();
+  const [editInput, setEditInput] = useState("");
+
   const tweetUserLike =
     tweet["like_array"].find(
       (like_obj) => like_obj["user_id"] === user["id"]
@@ -26,6 +36,47 @@ export default function TweetCard({ tweet, user }) {
     dispatch(removeLikedTweet(data));
   }
 
+  // <button onClick={deleteATweetFun}>Remove</button>
+  // <form onSubmit={updateATweetFun}>
+  //   <input
+  //     placeholder="Edit tweet"
+  //     value={editInput}
+  //     onChange={(e) => setEditInput(e.target.value)}
+  //   />
+  //   <button>Update</button>
+  // </form>
+  function updateATweetFun(e) {
+    e.preventDefault();
+    const data = { tweet: editInput, id: tweet.id };
+    dispatch(updateTweet(data));
+    setEditInput("");
+  }
+
+  function deleteATweetFun() {
+    dispatch(removeTweet(tweet.id));
+  }
+
+  function redirectToDetailsFun(e) {
+    e.stopPropagation();
+    history.push(`/status/${tweet.id}`);
+  }
+
+  function showDropdown(e) {
+    // (element x - body x) + adjustments
+    // (element y - body y) + adjustments
+    const elementRadius = e.currentTarget.getBoundingClientRect();
+    const boundingVariable = document.querySelector(".tweet-option-dd");
+    const bodyRect = document.body.getBoundingClientRect();
+
+    boundingVariable.style.display = "block";
+    boundingVariable.style.position = "absolute";
+    boundingVariable.style.left = `${
+      elementRadius.left - bodyRect.left - 220
+    }px`;
+    boundingVariable.style.top = `${elementRadius.top - bodyRect.top}px`;
+    return;
+  }
+
   return (
     <div className="tweet__card--container">
       <div className="tweet__card--top">
@@ -38,9 +89,25 @@ export default function TweetCard({ tweet, user }) {
         </div>
         <div className="tweet__card--content">
           <div className="tweet__card--content-top">
-            <span className="tweet__username">{`@${tweet["user"]["username"]}`}</span>
+            <span
+              className="tweet__username"
+              onClick={(e) => redirectToDetailsFun(e)}
+            >{`@${tweet["user"]["username"]}`}</span>
             <span className="tweet__dot">·</span>
             <span className="tweet__created">{`${tweet["sent_date"]}`}</span>
+            <button onClick={showDropdown} className="dont-remove">
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                class="dont-remove r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"
+              >
+                <g>
+                  <circle cx="5" cy="12" r="2"></circle>
+                  <circle cx="12" cy="12" r="2"></circle>
+                  <circle cx="19" cy="12" r="2"></circle>
+                </g>
+              </svg>
+            </button>
           </div>
           <div className="tweet__card--content-bottom">
             <span className="tweet__content">{tweet["tweet"]}</span>

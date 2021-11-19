@@ -106,3 +106,19 @@
   height: 2rem !important;
   fill: rgb(239, 243, 244) !important;
 }
+.tweet-option-dd {
+  background-color: #15202b;
+  display: none;
+  width: 25rem;
+  z-index: 1000;
+  border-radius: 5px;
+  box-shadow: rgb(136 153 166 / 20%) 0px 0px 15px,
+    rgb(136 153 166 / 15%) 0px 0px 3px 1px;
+}
+
+.p-1 {
+  margin-left: 0 !important;
+}
+.kansd-00 {
+  fill: rgb(244, 33, 46);
+}

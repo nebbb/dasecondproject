@@ -1,0 +1,66 @@
+.single-tweet-card--comment {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: 150ms background;
+  cursor: pointer;
+  user-select: none;
+  padding: 1rem 1.6rem;
+  border-top: 1px solid rgb(56, 68, 77);
+}
+/* .single-tweet-card--comment:not(:first-child) {
+  border-top: 1px solid rgb(56, 68, 77);
+}
+*/
+/* .single-tweet-card--comment:last-child {
+  border-bottom: 1px solid rgb(56, 68, 77);
+} */
+.single-tweet-card--comment:hover {
+  background: rgb(28, 39, 50);
+}
+.single-tweet-comm-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+}
+.single-tweet-comm-right-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.single-tweet-comm-right-top div {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.single-tweet-comm-right-top span {
+  font-size: 1.4rem;
+}
+.single-tweet-comm-right-top span:first-child {
+  cursor: pointer;
+}
+.single-tweet-comm-right-top span:first-child:hover {
+  text-decoration: underline;
+}
+.single-tweet-comm-right-bottom {
+  font-size: 1.5rem;
+}
+.comment-time {
+  color: rgb(136, 153, 166);
+}
+.single-tweet-comm-right-top button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background: none;
+  display: flex;
+  align-items: center;
+  padding: 0.6rem;
+  border-radius: 50%;
+  justify-content: center;
+  transition: 150ms background;
+}
+.single-tweet-comm-right-top button:hover {
+  background: rgb(28, 51, 70);
+}

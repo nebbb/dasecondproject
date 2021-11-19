@@ -9,6 +9,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import LoginPage from "./components/LoginPage";
 import HomePage from "./components/HomePage";
+import TweetPage from "./components/TweetPage";
 import { authenticate } from "./store/session";
 
 import "./reset.css";
@@ -38,14 +39,17 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path="/users" exact={true}>
+        {/* <ProtectedRoute path="/users" exact={true}>
           <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
         <ProtectedRoute path="/" exact={true}>
           <HomePage />
+        </ProtectedRoute>
+        <ProtectedRoute path="/status/:tweetId" exact={true}>
+          <TweetPage />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

@@ -1,0 +1,131 @@
+.single-tweet-card--container {
+  width: 100%;
+  color: #fff;
+}
+.padding-wrapper-single--tweet {
+  padding: 1rem 1.6rem;
+}
+.single-tweet-user-details {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.single-tweet-user-left-pic {
+  border-radius: 50%;
+  width: 4.8rem;
+  height: 4.8rem;
+}
+.single-tweet-user-right-top span {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.single-tweet-user-right-top span:hover {
+  text-decoration: underline;
+}
+.single-tweet-user-tweet-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.single-tweet-user-tweet-content p {
+  font-size: 2.3rem;
+}
+.single-tweet-user-tweet-content span {
+  color: rgb(136, 153, 166);
+  font-size: 1.5rem;
+}
+.single-tweet-pic {
+  max-width: 100%;
+  cursor: pointer;
+  display: block;
+  border-radius: 1.5rem;
+  border: 1px solid rgb(56, 68, 77);
+}
+.single-tweet-user-tweet-stats {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  border-top: 1px solid rgb(56, 68, 77);
+  border-bottom: 1px solid rgb(56, 68, 77);
+  padding: 1.2rem 0;
+  margin-top: 1rem;
+}
+.single-tweet-user-tweet-stats p {
+  font-size: 1.5rem;
+  color: rgb(136, 153, 166);
+}
+.single-tweet-user-tweet-stats span {
+  font-size: 1.5rem;
+  color: #fff;
+}
+.single-tweet-user-tweet-btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid rgb(56, 68, 77);
+}
+.single-tweet-user-tweet-btns button {
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+}
+.single-tweet-profile-pic-reply {
+  width: 4.8rem;
+  height: 4.8rem;
+  border-radius: 50%;
+}
+.single-tweet-card--bottom-reply {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.6rem;
+  padding: 2rem 0;
+}
+.single-tweet-card--bottom-reply input {
+  background: transparent;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  font-family: inherit;
+  color: #fff;
+  font-size: 2rem;
+}
+
+.single-tweet-card--bottom-reply input::placeholder {
+  font-size: 2rem;
+  color: rgb(136, 153, 166);
+}
+.reply-tweet-unactive {
+  background: none;
+  outline: none;
+  border: none;
+  color: #828f95;
+  font-family: inherit;
+  font-size: 1.5rem;
+  background-color: #195d8d;
+  border-radius: 100px;
+  padding: 1rem 1.6rem;
+  font-weight: 600;
+}
+.reply-tweet-active {
+  background: none;
+  outline: none;
+  border: none;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1.5rem;
+  border-radius: 100px;
+  padding: 1rem 1.6rem;
+  background-color: #1d9bf0;
+  cursor: pointer;
+  font-weight: 600;
+}
+.single-tweet-comment-pro-pic {
+  width: 4.8rem;
+  height: 4.8rem;
+  border-radius: 50%;
+}
