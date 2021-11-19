@@ -8,17 +8,19 @@ export default function HomeTweets({ tweets, user }) {
   const dispatch = useDispatch();
   const [tweetInput, setTweetInput] = useState("");
   const [tweetImage, setTweetImage] = useState(null);
+  const [selectedTweet, setSelectedTweet] = useState(null);
   function removeModal(e) {
-    if (!e.target.classList.contains("dont-remove")) {
-      document.querySelector(".tweet-option-dd").style.display = "none";
-    }
+    // setTimeout(() => {
+    if (document.querySelector(".tweet-option-dd"))
+      if (!e.target.classList.contains("dont-remove")) {
+        document.querySelector(".tweet-option-dd").style.display = "none";
+      }
+    // }, 5000);
   }
 
   useEffect(() => {
     document.body.addEventListener("click", removeModal);
-    return function cleanup() {
-      document.body.removeEventListener("click", removeModal);
-    };
+    return () => document.body.removeEventListener("click", removeModal);
   }, []);
 
   function uploadTweet() {
@@ -35,7 +37,14 @@ export default function HomeTweets({ tweets, user }) {
   return (
     <div className="home__tweets--container">
       <div className="dont-remove tweet-option-dd">
-        <div className="dont-remove">
+        <div
+          className="dont-remove"
+          onClick={() =>
+            (document.querySelector(
+              `.tweet__card--delete__container-${selectedTweet}`
+            ).style.display = "block")
+          }
+        >
           <svg
             viewBox="0 0 24 24"
             aria-hidden="true"
@@ -141,7 +150,14 @@ export default function HomeTweets({ tweets, user }) {
           </div>
         </div>
       </div>
-      {tweets && tweets.map((tweet) => <TweetCard tweet={tweet} user={user} />)}
+      {tweets &&
+        tweets.map((tweet) => (
+          <TweetCard
+            setSelectedTweet={setSelectedTweet}
+            tweet={tweet}
+            user={user}
+          />
+        ))}
     </div>
   );
 }

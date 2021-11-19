@@ -8,16 +8,17 @@ export default function TweetDetails({ tweet, user }) {
   const history = useHistory();
 
   function removeModal(e) {
-    if (!e.target.classList.contains("dont-remove")) {
-      document.querySelector(".tweet-option-dd").style.display = "none";
-    }
+    // setTimeout(() => {
+    if (document.querySelector(".tweet-option-dd"))
+      if (!e.target.classList.contains("dont-remove")) {
+        document.querySelector(".tweet-option-dd").style.display = "none";
+      }
+    // }, 5000);
   }
 
   useEffect(() => {
     document.body.addEventListener("click", removeModal);
-    return function cleanup() {
-      document.body.removeEventListener("click", removeModal);
-    };
+    return () => document.body.removeEventListener("click", removeModal);
   }, []);
 
   return (

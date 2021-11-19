@@ -1,0 +1,8 @@
+.explore_section__container {
+  width: 59.8rem;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid rgb(56, 68, 77);
+  border-right: 1px solid rgb(56, 68, 77);
+  margin-right: 3rem;
+}

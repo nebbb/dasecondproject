@@ -16,7 +16,7 @@ export default function LeftSideBar({ user }) {
     <div className="left_side_bar-container">
       <div>{twitter}</div>
       <nav className="left-side-bar--nav">
-        <NavLink to="/" activeClassName="active--link">
+        <NavLink to="/" exact activeClassName="active--link">
           <span>{home} Home</span>
         </NavLink>
         <NavLink to="/explore" activeClassName="active--link">

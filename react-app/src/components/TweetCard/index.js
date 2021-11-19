@@ -10,7 +10,7 @@ import {
 } from "../../store/tweets";
 import { Link } from "react-router-dom";
 
-export default function TweetCard({ tweet, user }) {
+export default function TweetCard({ tweet, user, setSelectedTweet }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const [editInput, setEditInput] = useState("");
@@ -54,6 +54,9 @@ export default function TweetCard({ tweet, user }) {
 
   function deleteATweetFun() {
     dispatch(removeTweet(tweet.id));
+    document.querySelector(
+      `.tweet__card--delete__container-${tweet.id}`
+    ).style.display = "none";
   }
 
   function redirectToDetailsFun(e) {
@@ -79,6 +82,34 @@ export default function TweetCard({ tweet, user }) {
 
   return (
     <div className="tweet__card--container">
+      <div
+        className={`tweet__card--delete__container tweet__card--delete__container-${tweet.id}`}
+      >
+        <div className="tweet__card--delete--modal">
+          <h3>Delete Tweet?</h3>
+          <p>
+            This can’t be undone and it will be removed from your profile, the
+            timeline of any accounts that follow you, and from Twitter search
+            results.
+          </p>
+          <button
+            className="tweet__card--delete--del"
+            onClick={deleteATweetFun}
+          >
+            Delete
+          </button>
+          <button
+            className="tweet__card--delete--can"
+            onClick={() =>
+              (document.querySelector(
+                `.tweet__card--delete__container-${tweet.id}`
+              ).style.display = "none")
+            }
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
       <div className="tweet__card--top">
         <div className="tweet__card--profile-pic">
           <img
@@ -96,7 +127,13 @@ export default function TweetCard({ tweet, user }) {
             <span className="tweet__dot">·</span>
             <span className="tweet__created">{`${tweet["sent_date"]}`}</span>
             {tweet.user_id === user.id && (
-              <button onClick={showDropdown} className="dont-remove">
+              <button
+                onClick={(e) => {
+                  showDropdown(e);
+                  setSelectedTweet(tweet.id);
+                }}
+                className="dont-remove"
+              >
                 <svg
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -167,8 +204,18 @@ export default function TweetCard({ tweet, user }) {
                 </svg>
               </button>
             )}
-
             <span>{tweet["like_count"]}</span>
+          </div>
+          <div className="tweet__icon">
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              class="r-111h2gw r-4qtqp9 r-yyyyoo r-1q142lx r-1xvli5t r-1b7u577 r-dnmrzs r-bnwqim r-1plcrui r-lrvibr"
+            >
+              <g>
+                <path d="M23.074 3.35H20.65V.927c0-.414-.337-.75-.75-.75s-.75.336-.75.75V3.35h-2.426c-.414 0-.75.337-.75.75s.336.75.75.75h2.425v2.426c0 .414.335.75.75.75s.75-.336.75-.75V4.85h2.424c.414 0 .75-.335.75-.75s-.336-.75-.75-.75zM19.9 10.744c-.415 0-.75.336-.75.75v9.782l-6.71-4.883c-.13-.095-.285-.143-.44-.143s-.31.048-.44.144l-6.71 4.883V5.6c0-.412.337-.75.75-.75h6.902c.414 0 .75-.335.75-.75s-.336-.75-.75-.75h-6.9c-1.242 0-2.25 1.01-2.25 2.25v17.15c0 .282.157.54.41.668.25.13.553.104.78-.062L12 17.928l7.458 5.43c.13.094.286.143.44.143.117 0 .234-.026.34-.08.252-.13.41-.387.41-.67V11.495c0-.414-.335-.75-.75-.75z"></path>
+              </g>
+            </svg>
           </div>
           <div className="tweet__icon">
             <svg

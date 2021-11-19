@@ -159,9 +159,15 @@ export default function SingleTweetCard({ tweet, user }) {
       </div>
       <div className="single-tweet-card--bottom--comments">
         {tweet?.["comment_array"]?.length > 0 &&
+          tweet?.["comment_array"].map((comment) => (
+            <CommentCard comment={comment} user={user} />
+          ))}
+        {/* {tweet?.["comment_array"]?.length > 0 &&
           tweet?.["comment_array"]
-            .reverse()
-            .map((comment) => <CommentCard comment={comment} user={user} />)}
+            .sort(function (a, b) {
+              return a.id - b.id;
+            })
+            .map((comment) => <CommentCard comment={comment} user={user} />)} */}
       </div>
     </div>
   );

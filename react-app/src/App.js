@@ -10,6 +10,10 @@ import User from "./components/User";
 import LoginPage from "./components/LoginPage";
 import HomePage from "./components/HomePage";
 import TweetPage from "./components/TweetPage";
+import ExplorePage from "./components/ExplorePage";
+import BookmarkPage from "./components/BookmarkPage";
+import MessagePage from "./components/MessagePage";
+
 import { authenticate } from "./store/session";
 
 import "./reset.css";
@@ -47,6 +51,15 @@ function App() {
         </ProtectedRoute> */}
         <ProtectedRoute path="/" exact={true}>
           <HomePage />
+        </ProtectedRoute>
+        <ProtectedRoute path="/explore" exact={true}>
+          <ExplorePage />
+        </ProtectedRoute>
+        <ProtectedRoute path="/bookmarks" exact={true}>
+          <BookmarkPage />
+        </ProtectedRoute>
+        <ProtectedRoute path="/messages" exact={true}>
+          <MessagePage />
         </ProtectedRoute>
         <ProtectedRoute path="/status/:tweetId" exact={true}>
           <TweetPage />

@@ -38,6 +38,8 @@ body {
   color: #fff;
   font-size: 1.5rem;
   letter-spacing: 0.2px;
+  overflow: hidden;
+  user-select: none;
 }
 .tweet-option-dd div:first-child {
   color: rgb(244, 33, 46);

@@ -41,7 +41,7 @@
 .tweet__card--details {
   display: flex;
   align-items: center;
-  width: 60%;
+  width: 80%;
   justify-content: space-between;
   margin-left: 5.4rem;
 }
@@ -127,4 +127,77 @@
 }
 .tweet__card--content-top button:hover {
   background: rgb(28, 51, 70);
+}
+.tweet__card--delete__container {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(91, 112, 131, 0.4);
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+.tweet__card--delete--modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: #15202b;
+  width: 32rem;
+  height: 30rem;
+  border-radius: 1.5rem;
+  padding: 3.6rem;
+  transform: translate(-50%, -50%);
+}
+.tweet__card--delete--modal p {
+  color: rgb(136, 153, 166);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.tweet__card--delete--modal h3 {
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.tweet__card--delete--del {
+  background: rgb(244, 33, 46);
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 1.4rem 0;
+  width: 100%;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  font-family: inherit;
+  border-radius: 100px;
+  margin: 1rem 0;
+}
+.tweet__card--delete--del:hover {
+  background: rgb(220, 30, 41);
+}
+.tweet__card--delete--can {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 1.4rem 0;
+  width: 100%;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  font-family: inherit;
+  border-radius: 100px;
+  border: 1px solid rgb(83, 100, 113);
+  transition: 150ms background;
+}
+.tweet__card--delete--can:hover {
+  background: rgb(44, 54, 64);
 }
