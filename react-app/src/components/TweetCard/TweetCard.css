@@ -5,9 +5,12 @@
   background: #15202b;
   color: #fff;
   padding: 1rem 1.25rem;
-  border-top: 1px solid rgb(56, 68, 77);
+  /* border-top: 1px solid rgb(56, 68, 77); */
   cursor: pointer;
   transition: 150ms background;
+}
+.tweet__card--container {
+  border-bottom: 1px solid rgb(56, 68, 77);
 }
 .tweet__card--container:hover {
   background: rgb(28, 39, 50);

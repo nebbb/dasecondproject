@@ -13,6 +13,7 @@ import TweetPage from "./components/TweetPage";
 import ExplorePage from "./components/ExplorePage";
 import BookmarkPage from "./components/BookmarkPage";
 import MessagePage from "./components/MessagePage";
+import ProfilePage from "./components/ProfilePage";
 
 import { authenticate } from "./store/session";
 
@@ -60,6 +61,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/messages" exact={true}>
           <MessagePage />
+        </ProtectedRoute>
+        <ProtectedRoute path="/profile/:profileId" exact={true}>
+          <ProfilePage />
         </ProtectedRoute>
         <ProtectedRoute path="/status/:tweetId" exact={true}>
           <TweetPage />

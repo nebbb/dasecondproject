@@ -11,6 +11,7 @@
   display: flex;
   padding: 1rem 1.25rem;
   gap: 1rem;
+  border-bottom: 1px solid rgb(56, 68, 77);
 }
 .home__tweet--profile {
   width: 4.8rem;

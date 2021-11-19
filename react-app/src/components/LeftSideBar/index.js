@@ -28,7 +28,7 @@ export default function LeftSideBar({ user }) {
         <NavLink to="/bookmarks" activeClassName="active--link">
           <span>{bookmarks} Bookmarks</span>
         </NavLink>
-        <NavLink to="/profile" activeClassName="active--link">
+        <NavLink to={`/profile/${user.id}`} activeClassName="active--link">
           <span>{profile} Profile</span>
         </NavLink>
         <NavLink to="/more" activeClassName="active--link">

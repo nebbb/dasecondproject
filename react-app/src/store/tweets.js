@@ -3,6 +3,7 @@ const ADD = "tweets/ADD";
 const REMOVE = "tweets/REMOVE";
 const REMOVE_LIKE = "tweets/REMOVELIKE";
 const ADD_COMMENT = "comments/ADD";
+const REMOVE_COMMENT = "comments/REMOVE";
 
 const load = (tweets) => ({
   type: LOAD,
@@ -26,6 +27,11 @@ const removeLike = (data) => ({
 
 const addComment = (data) => ({
   type: ADD_COMMENT,
+  data,
+});
+
+const removeComment = (data) => ({
+  type: REMOVE_COMMENT,
   data,
 });
 
@@ -124,6 +130,20 @@ export const removeLikedTweet = (data) => async (dispatch) => {
   }
 };
 
+export const deleteCommentTweet = (data) => async (dispatch) => {
+  const response = await fetch(`/api/comments/delete/${data["comment_id"]}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (response.ok) {
+    const comment_id = await response.json();
+    dispatch(removeComment(data));
+  }
+};
+
 export const removeTweet = (tweet_id) => async (dispatch) => {
   const response = await fetch(`/api/tweets/delete/${tweet_id}`, {
     method: "DELETE",
@@ -167,6 +187,16 @@ const tweetsReducer = (state = {}, action) => {
       const index = oldTweet["like_array"].findIndex(getLikeObject);
       oldTweet["like_array"].splice(index, 1);
       return { ...state, [action.data.tweet_id]: oldTweet };
+    case REMOVE_COMMENT:
+      function getCommentObject(object) {
+        return object["id"] === action.data.comment_id;
+      }
+      const oldTweetArrayTwo = { ...state };
+      const oldTweetTwo = oldTweetArrayTwo[action.data.tweet_id];
+      if (oldTweetTwo["comment_count"] > 0) oldTweetTwo["comment_count"]--;
+      const indexTwo = oldTweetTwo["comment_array"].findIndex(getCommentObject);
+      oldTweetTwo["comment_array"].splice(indexTwo, 1);
+      return { ...state, [action.data.tweet_id]: oldTweetTwo };
     case ADD_COMMENT:
       // function getLikeObject(object) {
       //   return object["id"] === action.data.like_id;
