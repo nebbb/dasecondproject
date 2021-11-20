@@ -4,6 +4,8 @@ const REMOVE = "tweets/REMOVE";
 const REMOVE_LIKE = "tweets/REMOVELIKE";
 const ADD_COMMENT = "comments/ADD";
 const REMOVE_COMMENT = "comments/REMOVE";
+const ADD_BOOKMARK = "bookmarks/ADD";
+const REMOVE_BOOKMARK = "bookmarks/REMOVE";
 
 const load = (tweets) => ({
   type: LOAD,
@@ -32,6 +34,16 @@ const addComment = (data) => ({
 
 const removeComment = (data) => ({
   type: REMOVE_COMMENT,
+  data,
+});
+
+const addBookmark = (bookmark) => ({
+  type: ADD_BOOKMARK,
+  bookmark,
+});
+
+const removeBookmark = (data) => ({
+  type: REMOVE_BOOKMARK,
   data,
 });
 
@@ -82,6 +94,37 @@ export const addAComment = (formData) => async (dispatch) => {
     const comment = await response.json();
 
     dispatch(addComment(comment["comment"]));
+  }
+};
+
+export const addABookmarkFromTweets = (formData) => async (dispatch) => {
+  const response = await fetch("/api/bookmarks/add", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  });
+
+  if (response.ok) {
+    const bookmark = await response.json();
+
+    dispatch(addBookmark(bookmark["bookmark"]));
+  }
+};
+
+export const removeABookmarkFromTweets = (data) => async (dispatch) => {
+  const response = await fetch(`/api/bookmarks/delete/${data["bookmark_id"]}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (response.ok) {
+    const bookmark_id = await response.json();
+    console.log("INSIDE TWEET REDUCER");
+    dispatch(removeBookmark(data));
   }
 };
 
@@ -212,6 +255,22 @@ const tweetsReducer = (state = {}, action) => {
       oldTweetArrayObj["comment_count"]++;
       oldTweetArrayObj["comment_array"].push(action.data);
       return { ...state, [action.data.id]: oldTweetArrayObj };
+    case ADD_BOOKMARK:
+      const oldTweetData = { ...state };
+      const targetTweetObject = oldTweetData[action.bookmark.tweet_id];
+      const targetTweetBookmarkArray = targetTweetObject["bookmark_array"];
+      targetTweetBookmarkArray.push(action.bookmark);
+      return oldTweetData;
+    case REMOVE_BOOKMARK:
+      function getTheBookmark(object) {
+        return object["id"] === action.data.bookmark_id;
+      }
+      const oldUserData = { ...state };
+      const currentUserTweet = oldUserData[action.data.tweet_id];
+      const bookmarkArray = currentUserTweet["bookmark_array"];
+      const bookmarkIndex = bookmarkArray.findIndex(getTheBookmark);
+      bookmarkArray.splice(bookmarkIndex, 1);
+      return { ...state, [action.data.tweet_id]: currentUserTweet };
     default:
       return state;
   }

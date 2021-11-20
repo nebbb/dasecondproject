@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import "./BookmarkSection.css";
-import { useDispatch, useSelector } from "react-redux";
-import { loadBookmarks } from "../../store/bookmarks";
+// import { useDispatch, useSelector } from "react-redux";
+// import { loadBookmarks } from "../../store/bookmarks";
 import TweetCard from "../TweetCard";
 
-export default function BookmarkSection({ user }) {
-  const dispatch = useDispatch();
-  const bookmarks = useSelector((state) => Object.values(state.bookmarks));
-  useEffect(() => {
-    dispatch(loadBookmarks({ user_id: user.id }));
-  }, []);
+export default function BookmarkSection({ user, bookmarks }) {
+  // const dispatch = useDispatch();
+  // const bookmarks = useSelector((state) => Object.values(state.bookmarks));
+  // useEffect(() => {
+  //   dispatch(loadBookmarks({ user_id: user.id }));
+  // }, []);
 
   return (
     <div className="bookmark__section">
@@ -19,9 +19,11 @@ export default function BookmarkSection({ user }) {
       </div>
       <div>
         {bookmarks &&
-          bookmarks.map((bookmark) => (
-            <TweetCard user={user} tweet={bookmark} hide={true} />
-          ))}
+          bookmarks.map((bookmark) => {
+            if (bookmark["bookmark_array"]?.length > 0) {
+              return <TweetCard user={user} tweet={bookmark} hide={true} />;
+            }
+          })}
       </div>
     </div>
   );

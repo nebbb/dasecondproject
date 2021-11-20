@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required
-from app.models import db, User, Tweet, Like, Comment
+from app.models import db, User, Tweet, Like, Comment, Bookmark
 from datetime import date, datetime as dt
 
 tweet_routes = Blueprint("tweets", __name__)
@@ -24,10 +24,12 @@ def get_a_tweet(tweet_id):
         comment_dict.append(comm_dict)
 
     like_array = db.session.query(Like).filter(Like.tweet_id==tweet_dict["id"]).all()
+    bookmark_array = db.session.query(Bookmark).filter(Bookmark.tweet_id==tweet_dict["id"]).all()
     tweet_dict["comment_count"] = len(comment_dict)
     tweet_dict["like_count"] = len(like_array)
     tweet_dict["like_array"] = [like.to_dict() for like in like_array]
     tweet_dict["comment_array"] = comment_dict
+    tweet_dict["bookmark_array"] = [bookmark.to_dict() for bookmark in bookmark_array]
 
     return {"tweet": tweet_dict}
 
@@ -46,10 +48,12 @@ def get_home_tweets():
 
         comment_count = db.session.query(Comment).filter(Comment.tweet_id==tweet_dict["id"]).count()
         like_array = db.session.query(Like).filter(Like.tweet_id==tweet_dict["id"]).all()
+        bookmark_array = db.session.query(Bookmark).filter(Bookmark.tweet_id==tweet_dict["id"]).all()
 
         tweet_dict["comment_count"] = comment_count
         tweet_dict["like_count"] = len(like_array)
         tweet_dict["like_array"] = [like.to_dict() for like in like_array]
+        tweet_dict["bookmark_array"] = [bookmark.to_dict() for bookmark in bookmark_array]
 
         loop.append(tweet_dict)
 
@@ -76,10 +80,13 @@ def post_a_tweet():
 
     comment_count = db.session.query(Comment).filter(Comment.tweet_id==tweet_dict["id"]).count()
     like_array = db.session.query(Like).filter(Like.tweet_id==tweet_dict["id"]).all()
+    bookmark_array = db.session.query(Bookmark).filter(Bookmark.tweet_id==tweet_dict["id"]).all()
 
     tweet_dict["comment_count"] = comment_count
     tweet_dict["like_count"] = len(like_array)
     tweet_dict["like_array"] = [like.to_dict() for like in like_array]
+    tweet_dict["bookmark_array"] = [bookmark.to_dict() for bookmark in bookmark_array]
+
 
     return {"tweet": tweet_dict}
 
@@ -106,10 +113,12 @@ def update_a_tweet(tweet_id):
 
     comment_count = db.session.query(Comment).filter(Comment.tweet_id==tweet_dict["id"]).count()
     like_array = db.session.query(Like).filter(Like.tweet_id==tweet_dict["id"]).all()
+    bookmark_array = db.session.query(Bookmark).filter(Bookmark.tweet_id==tweet_dict["id"]).all()
 
     tweet_dict["comment_count"] = comment_count
     tweet_dict["like_count"] = len(like_array)
     tweet_dict["like_array"] = [like.to_dict() for like in like_array]
+    tweet_dict["bookmark_array"] = [bookmark.to_dict() for bookmark in bookmark_array]
 
     return {"tweet": tweet_dict}
 

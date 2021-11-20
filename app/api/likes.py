@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required
-from app.models import db, User, Like, Tweet, Comment
+from app.models import db, User, Like, Tweet, Comment, Bookmark
 from datetime import datetime as dt
 
 
@@ -34,6 +34,7 @@ def post_a_like():
 
     comment_array = db.session.query(Comment).filter(Comment.tweet_id==tweet_dict["id"]).all()
     like_array = db.session.query(Like).filter(Like.tweet_id==tweet_dict["id"]).all()
+    bookmark_array = db.session.query(Bookmark).filter(Bookmark.tweet_id==tweet_dict["id"]).all()
 
     comment_dict = []
 
@@ -47,6 +48,7 @@ def post_a_like():
     tweet_dict["like_count"] = len(like_array)
     tweet_dict["like_array"] = [like.to_dict() for like in like_array]
     tweet_dict["comment_array"] = comment_dict
+    tweet_dict["bookmark_array"] = [bookmark.to_dict() for bookmark in bookmark_array]
 
     return {"tweet": tweet_dict}
 

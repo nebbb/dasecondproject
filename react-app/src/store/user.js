@@ -3,6 +3,9 @@ const FOLLOW = "user/FOLLOW";
 const UNFOLLOW = "users/UNFOLLOW";
 const ADDLIKE = "users/ADDLIKE";
 const REMOVELIKE = "users/REMOVELIKE";
+const REMOVETWEET = "users/REMOVETWEET";
+const ADDBOOKMARKPROFILE = "users/ADDBOOKMARK";
+const REMOVEBOOKMARKPROFILE = "users/REMOVEBOOKMARK";
 
 const load = (user) => ({
   type: LOAD,
@@ -27,6 +30,21 @@ const likeTheTweet = (like) => ({
 const UnlikeTheTweet = (data) => ({
   type: REMOVELIKE,
   data,
+});
+
+const removeBookmarkFromProfile = (data) => ({
+  type: REMOVEBOOKMARKPROFILE,
+  data,
+});
+
+const addABookmarkFromProfile = (data) => ({
+  type: ADDBOOKMARKPROFILE,
+  data,
+});
+
+const removeTheTweet = (tweet_id) => ({
+  type: REMOVETWEET,
+  tweet_id,
 });
 
 export const loadSingleUser = (data) => async (dispatch) => {
@@ -68,6 +86,39 @@ export const likeATweetFromProfile = (formData) => async (dispatch) => {
   }
 };
 
+export const bookmarkATweetFromProfile = (formData) => async (dispatch) => {
+  const response = await fetch("/api/bookmarks/add", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  });
+
+  if (response.ok) {
+    const bookmark = await response.json();
+    dispatch(addABookmarkFromProfile(bookmark["bookmark"]));
+  }
+};
+
+export const unBookmarkATweetFromProfile = (formData) => async (dispatch) => {
+  const response = await fetch(
+    `/api/bookmarks/delete/${formData["bookmark_id"]}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    }
+  );
+
+  if (response.ok) {
+    const bookmark = await response.json();
+    dispatch(removeBookmarkFromProfile(formData));
+  }
+};
+
 export const removeLikedTweetProfile = (data) => async (dispatch) => {
   const response = await fetch(`/api/likes/delete/${data["like_id"]}`, {
     method: "DELETE",
@@ -93,6 +144,20 @@ export const unfollowAUser = (follow_id) => async (dispatch) => {
   if (response.ok) {
     const follow = await response.json();
     dispatch(unfollow(follow["follow_id"]));
+  }
+};
+
+export const removeTweetFromProfile = (tweet_id) => async (dispatch) => {
+  const response = await fetch(`/api/tweets/delete/${tweet_id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (response.ok) {
+    const tweet = await response.json();
+    dispatch(removeTheTweet(tweet_id));
   }
 };
 
@@ -140,6 +205,41 @@ const userReducer = (state = {}, action) => {
       const findTheDex3 = theObject2["like_array"].findIndex(getLikeObject3);
       theObject2["like_array"].splice(findTheDex3, 1);
       return oldUserObject2;
+    case REMOVETWEET:
+      function findSpecificTweetObject(object) {
+        return object["id"] === action.tweet_id;
+      }
+      const oldUserObject3 = { ...state };
+      const oldUserTweetArray3 = oldUserObject3["tweets"];
+      const findTheDex4 = oldUserTweetArray3.findIndex(findSpecificTweetObject);
+      oldUserTweetArray3.splice(findTheDex4, 1);
+      return oldUserObject3;
+    case ADDBOOKMARKPROFILE:
+      function getTheUserObj(object) {
+        return object["id"] === action.data.tweet_id;
+      }
+      const oldUserData40 = { ...state };
+      const oldUserDataBookmarks40 = oldUserData40["tweets"];
+      const theIndex420 = oldUserDataBookmarks40.findIndex(getTheUserObj);
+      const oldUserDataBookmarksReal =
+        oldUserDataBookmarks40[theIndex420]["bookmark_array"];
+      oldUserDataBookmarksReal.push(action.data);
+      return oldUserData40;
+    case REMOVEBOOKMARKPROFILE:
+      function getTheUserObj4(object) {
+        return object["id"] === action.data.tweet_id;
+      }
+      function getTheUserObj40(object) {
+        return object["id"] === action.data.bookmark_id;
+      }
+      const oldUserData400 = { ...state };
+      const oldUserDataBookmarks400 = oldUserData400["tweets"];
+      const theIndex4200 = oldUserDataBookmarks400.findIndex(getTheUserObj4);
+      const oldUserDataBookmarksReal0 =
+        oldUserDataBookmarks400[theIndex4200]["bookmark_array"];
+      const theIndex000 = oldUserDataBookmarksReal0.findIndex(getTheUserObj40);
+      oldUserDataBookmarksReal0.splice(theIndex000, 1);
+      return oldUserData400;
     default:
       return state;
   }
