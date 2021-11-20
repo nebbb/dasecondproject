@@ -103,7 +103,7 @@ export const updateTweet = (formData) => async (dispatch) => {
 
 export const likeATweet = (formData) => async (dispatch) => {
   const response = await fetch(`/api/likes/add`, {
-    method: "PUT",
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },

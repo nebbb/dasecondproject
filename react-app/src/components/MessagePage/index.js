@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LeftSideBar from "../LeftSideBar";
+import "./MessagePage.css";
 
 export default function MessagePage() {
   const user = useSelector((state) => state.session.user);

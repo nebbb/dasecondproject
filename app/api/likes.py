@@ -16,7 +16,7 @@ def get_the_likes(tweet_id):
 
 
 # POST Tweet
-@like_routes.route('/add', methods =['PUT'])
+@like_routes.route('/add', methods =['POST'])
 @login_required
 def post_a_like():
     data = request.json
@@ -59,3 +59,20 @@ def delete_a_like(like_id):
     db.session.commit()
 
     return {"like_id": like_id}
+
+
+# POST Tweet
+@like_routes.route('/add/simple', methods =['POST'])
+@login_required
+def post_a_like_simple():
+    data = request.json
+    like = Like(
+        user_id = data["user_id"],
+        tweet_id = data["tweet_id"],
+    )
+    db.session.add(like)
+    db.session.commit()
+
+    like_dict = like.to_dict()
+
+    return {"like": like_dict}

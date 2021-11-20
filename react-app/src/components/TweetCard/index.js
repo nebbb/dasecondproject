@@ -8,9 +8,19 @@ import {
   removeTweet,
   updateTweet,
 } from "../../store/tweets";
+import {
+  likeATweetFromProfile,
+  removeLikedTweetProfile,
+} from "../../store/user";
 import { Link } from "react-router-dom";
 
-export default function TweetCard({ tweet, user, setSelectedTweet, hide }) {
+export default function TweetCard({
+  tweet,
+  user,
+  setSelectedTweet,
+  hide,
+  profile,
+}) {
   const history = useHistory();
   const dispatch = useDispatch();
   const [editInput, setEditInput] = useState("");
@@ -25,7 +35,13 @@ export default function TweetCard({ tweet, user, setSelectedTweet, hide }) {
       user_id: user["id"],
       tweet_id: tweet["id"],
     };
-    dispatch(likeATweet(data));
+    if (profile) {
+      dispatch(likeATweetFromProfile(data));
+      return;
+    } else {
+      dispatch(likeATweet(data));
+    }
+    return;
   }
 
   function removeATweetFun() {
@@ -33,7 +49,13 @@ export default function TweetCard({ tweet, user, setSelectedTweet, hide }) {
       tweet_id: tweet.id,
       like_id: tweetUserLike.id,
     };
-    dispatch(removeLikedTweet(data));
+    if (profile) {
+      dispatch(removeLikedTweetProfile(data));
+      return;
+    } else {
+      dispatch(removeLikedTweet(data));
+    }
+    return;
   }
 
   // <button onClick={deleteATweetFun}>Remove</button>

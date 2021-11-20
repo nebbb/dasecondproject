@@ -10,8 +10,16 @@ import {
   bookmarks,
   more,
 } from "./icons";
+import { useDispatch } from "react-redux";
+import { logout } from "../../store/session";
 
 export default function LeftSideBar({ user }) {
+  const dispatch = useDispatch();
+
+  async function logOutUser() {
+    await dispatch(logout());
+  }
+
   return (
     <div className="left_side_bar-container">
       <div>{twitter}</div>
@@ -31,7 +39,7 @@ export default function LeftSideBar({ user }) {
         <NavLink to={`/profile/${user.id}`} activeClassName="active--link">
           <span>{profile} Profile</span>
         </NavLink>
-        <NavLink to="/more" activeClassName="active--link">
+        <NavLink to="/account" activeClassName="active--link">
           <span>{more} More</span>
         </NavLink>
       </nav>
@@ -44,6 +52,7 @@ export default function LeftSideBar({ user }) {
         />
         <span className="footer__right-side">{`@${user.username}`}</span>
         <svg
+          onClick={logOutUser}
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
           fill="none"
