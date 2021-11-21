@@ -254,7 +254,7 @@ const tweetsReducer = (state = {}, action) => {
       const oldTweetArrayObj = oldData[action.data.tweet_id];
       oldTweetArrayObj["comment_count"]++;
       oldTweetArrayObj["comment_array"].push(action.data);
-      return { ...state, [action.data.id]: oldTweetArrayObj };
+      return { ...state, [action.data.tweet_id]: oldTweetArrayObj };
     case ADD_BOOKMARK:
       const oldTweetData = { ...state };
       const targetTweetObject = oldTweetData[action.bookmark.tweet_id];

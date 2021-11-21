@@ -5,6 +5,7 @@ import tweets from "./tweets";
 import users from "./users";
 import bookmarks from "./bookmarks";
 import user from "./user";
+import search from "./search";
 
 const rootReducer = combineReducers({
   session,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   users,
   bookmarks,
   user,
+  search,
 });
 
 let enhancer;

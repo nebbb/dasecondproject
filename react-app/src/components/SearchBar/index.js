@@ -1,7 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { searchResults } from "../../store/search";
+import { useHistory } from "react-router-dom";
 import "./SearchBar.css";
 
 export default function SearchBar() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [input, setInput] = useState("");
+  const results = useSelector((state) => Object.values(state.search));
+
+  useEffect(() => {
+    const data = { input };
+    dispatch(searchResults(data));
+  }, [input, dispatch]);
+
   return (
     <div className="search__bar--container">
       <svg
@@ -17,7 +30,30 @@ export default function SearchBar() {
         placeholder="Search Twitta"
         autoComplete="off"
         spellcheck="false"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
       />
+      {input.length > 0 && results.length > 0 && (
+        <div className="search__bar-results--container">
+          {results.map((result) => (
+            <div
+              className="result--single__container"
+              onClick={() => {
+                history.push(`/profile/${result.id}`);
+                setInput("");
+              }}
+            >
+              <div className="result--single__container-left">
+                <img src={result?.profile_pic} alt="profile-pic" />
+              </div>
+              <div className="result--single__container-right">
+                <p>{result?.name}</p>
+                <span>{`@${result?.username}`}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

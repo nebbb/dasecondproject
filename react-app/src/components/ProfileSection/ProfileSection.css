@@ -18,7 +18,6 @@
   font-size: 2rem;
   font-weight: 800;
   color: #fff;
-  margin-bottom: 1rem;
 }
 .user-profile--joined {
   font-size: 1.5rem;
@@ -98,7 +97,7 @@
   color: rgb(239, 243, 244);
   transition: 150ms background;
   position: absolute;
-  top: -20%;
+  top: -16%;
   right: 2%;
 }
 .user-profile--edit-del {
@@ -114,7 +113,7 @@
   color: rgb(15, 20, 25);
   transition: 150ms background;
   position: absolute;
-  top: -20%;
+  top: -16%;
   right: 2%;
 }
 .user-profile--edit-following {
@@ -131,7 +130,7 @@
   color: rgb(239, 243, 244);
   transition: 150ms background;
   position: absolute;
-  top: -20%;
+  top: -16%;
   right: 2%;
 }
 .user-profile--edit-btn:hover {
@@ -142,4 +141,16 @@
 }
 .user-profile--edit-del:hover {
   background: rgb(215, 219, 220);
+}
+.user-profile--username {
+  color: rgb(136, 153, 166);
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 1.2rem;
+}
+.user-profile--description {
+  font-size: 1.5rem;
+  color: #fff;
+  display: block;
+  margin-bottom: 1rem;
 }

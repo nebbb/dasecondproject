@@ -10,7 +10,10 @@ export default function FollowUserCard({ user }) {
           alt="profile-pic"
           className="follow__card-profile-pic"
         />
-        <span className="follow__card-profile-name">{`@${user.username}`}</span>
+        <div>
+          <span className="follow__card-profile-name">{`${user.name}`}</span>
+          <span className="follow__card-profile-username">{`@${user.username}`}</span>
+        </div>
       </div>
       <div className="follow__user-right">
         <button className="follow__card-btn">Follow</button>

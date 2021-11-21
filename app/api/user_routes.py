@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import db, User, Follow, Tweet, Like, Bookmark
 from app.models.models import Comment
@@ -10,6 +10,13 @@ user_routes = Blueprint('users', __name__)
 @login_required
 def users():
     users = User.query.all()
+    return {'users': [user.to_dict() for user in users]}
+
+@user_routes.route('/search', methods=["PUT"])
+@login_required
+def search_users():
+    data = request.json
+    users = User.query.filter(User.username.ilike(f'%{data["input"]}%')).all()
     return {'users': [user.to_dict() for user in users]}
 
 
@@ -25,6 +32,7 @@ def get_a_user(id):
     followers = db.session.query(Follow).filter(Follow.reciever==id).all()
 
     tweet_loop = []
+    like_loop = []
 
     for tweet in tweets:
         tweet_dict = tweet.to_dict()
@@ -44,7 +52,30 @@ def get_a_user(id):
 
         tweet_loop.append(tweet_dict)
 
+    for like in likes:
+        like_dict = like.to_dict()
+        tweet = Tweet.query.get(like_dict["tweet_id"])
+        tweet_dict = tweet.to_dict()
+
+        comments = db.session.query(Comment).filter(Comment.tweet_id==tweet_dict["id"]).all()
+        likes = db.session.query(Like).filter(Like.tweet_id==tweet_dict["id"]).all()
+        bookmarks = db.session.query(Bookmark).filter(Bookmark.tweet_id==tweet_dict["id"]).all()
+        user = User.query.get(tweet_dict["user_id"])
+
+
+        tweet_dict["user"] = user.to_dict()
+        tweet_dict["comment_count"] = len(comments)
+        tweet_dict["comment_array"] = [comment.to_dict() for comment in comments]
+        tweet_dict["like_count"] = len(likes)
+        tweet_dict["like_array"] = [like.to_dict() for like in likes]
+        tweet_dict["bookmark_array"] = [bookmark.to_dict() for bookmark in bookmarks]
+
+        like_loop.append(tweet_dict)
+
+
+
     user_dict["tweets"] = tweet_loop
+    user_dict["likes"] = like_loop
     user_dict["following"] = [follow.to_dict() for follow in follows]
     user_dict["followers"] = [follow.to_dict() for follow in followers]
 

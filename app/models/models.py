@@ -8,11 +8,13 @@ class User(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
+    name = db.Column(db.String(40))
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     profile_pic = db.Column(db.String(255))
+    banner_pic = db.Column(db.String(255))
     description = db.Column(db.Text)
-    dark = db.Column(db.Boolean, default=False, nullable=False)
+    dark = db.Column(db.Boolean, default=True, nullable=False)
     created_at= db.Column(db.Date, nullable=False)
 
     @property
@@ -34,6 +36,8 @@ class User(db.Model, UserMixin):
             'profile_pic': self.profile_pic,
             'description': self.description,
             'dark': self.dark,
+            'name': self.name,
+            'banner_pic': self.banner_pic,
             'created_at': self.created_at,
         }
 

@@ -8,6 +8,7 @@ import TweetCard from "../TweetCard";
 export default function ProfileSection({ user, userId, currentUser }) {
   const history = useHistory();
   const dispatch = useDispatch();
+  const [pageSection, setPageSection] = useState("tweets");
   const followObject =
     currentUser?.followers?.find((followObj) => followObj.sender === user.id) ||
     false;
@@ -106,7 +107,11 @@ export default function ProfileSection({ user, userId, currentUser }) {
         </div>
         <div className="profile__section--container-top-spit-b">
           <div className="profile__section--container-top-spit-b--wrapper">
-            <h3 className="user-profile--name">{currentUser?.username}</h3>
+            <h3 className="user-profile--name">{currentUser?.name}</h3>
+            <h4 className="user-profile--username">{`@${currentUser?.username}`}</h4>
+            <span className="user-profile--description">
+              {currentUser?.description}
+            </span>
             <div className="user-profile-joined--div">
               <svg
                 viewBox="0 0 24 24"
@@ -158,17 +163,18 @@ export default function ProfileSection({ user, userId, currentUser }) {
             )}
           </div>
           <div className="user-profile-menu">
-            <div>
+            <div onClick={() => setPageSection("tweets")}>
               <span>Tweets</span>
             </div>
-            <div>
+            <div onClick={() => setPageSection("likes")}>
               <span>Likes</span>
             </div>
           </div>
         </div>
       </div>
       <div className="profile__section--container-top">
-        {currentUser?.tweets &&
+        {pageSection === "tweets" &&
+          currentUser?.tweets &&
           currentUser?.tweets.map((tweet) => (
             <TweetCard
               tweet={tweet}
@@ -177,6 +183,7 @@ export default function ProfileSection({ user, userId, currentUser }) {
               setSelectedTweet={setSelectedTweet}
             />
           ))}
+        {pageSection === "likes" && "Likes section"}
       </div>
     </div>
   );

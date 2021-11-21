@@ -41,3 +41,12 @@
 .follow__user-card:hover {
   background: rgb(32, 46, 58);
 }
+.follow__user-left div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.follow__card-profile-username {
+  color: rgb(136, 153, 166);
+  font-size: 1.5rem;
+}

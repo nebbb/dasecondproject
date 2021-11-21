@@ -74,14 +74,7 @@
   max-height: 73rem;
   margin-bottom: 0;
 }
-.tweet__username {
-  font-size: 1.5rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-.tweet__username:hover {
-  text-decoration: underline;
-}
+
 .tweet__created {
   font-size: 1.5rem;
   color: rgb(136, 153, 166);
@@ -275,4 +268,17 @@
 }
 .mar-top-esm {
   margin-top: 0.2rem;
+}
+.tweet__name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.tweet__name:hover {
+  text-decoration: underline;
+}
+
+.tweet__username {
+  color: rgb(136, 153, 166);
+  font-size: 1.5rem;
 }

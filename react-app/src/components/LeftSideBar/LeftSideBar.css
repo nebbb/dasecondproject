@@ -95,3 +95,11 @@ a span svg,
   color: #fff;
   margin-left: auto;
 }
+.leftside__footer_flex {
+  display: flex;
+  flex-direction: column;
+}
+.footer__right-side-user {
+  color: rgb(136, 153, 166);
+  font-size: 1.4rem;
+}

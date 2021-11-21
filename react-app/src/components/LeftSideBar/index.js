@@ -50,7 +50,10 @@ export default function LeftSideBar({ user }) {
           alt="profile-pic"
           className="footer__profile-pic"
         />
-        <span className="footer__right-side">{`@${user.username}`}</span>
+        <p className="leftside__footer_flex">
+          <span className="footer__right-side">{`${user.name}`}</span>
+          <span className="footer__right-side-user">{`@${user.username}`}</span>
+        </p>
         <svg
           onClick={logOutUser}
           xmlns="http://www.w3.org/2000/svg"

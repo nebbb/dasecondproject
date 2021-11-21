@@ -191,9 +191,12 @@ export default function TweetCard({
         <div className="tweet__card--content">
           <div className="tweet__card--content-top">
             <span
-              className="tweet__username"
+              className="tweet__name"
               onClick={(e) => redirectToDetailsFun(e)}
-            >{`@${tweet["user"]["username"]}`}</span>
+            >
+              {tweet["user"]["name"]}
+            </span>
+            <span className="tweet__username">{`@${tweet["user"]["username"]}`}</span>
             <span className="tweet__dot">·</span>
             <span className="tweet__created">{`${tweet["sent_date"]}`}</span>
             {tweet.user_id === user.id && !hide && (

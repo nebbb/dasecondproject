@@ -16,12 +16,21 @@
   width: 4.8rem;
   height: 4.8rem;
 }
-.single-tweet-user-right-top span {
+.single-tweet-user-right-top {
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+}
+.single-tweet-user-right-top .single-tweet-user-right-top-t {
   font-size: 1.5rem;
   cursor: pointer;
 }
-.single-tweet-user-right-top span:hover {
+.single-tweet-user-right-top .single-tweet-user-right-top-t:hover {
   text-decoration: underline;
+}
+.single-tweet-user-right-top span:last-child {
+  font-size: 1.5rem;
+  color: rgb(136, 153, 166);
 }
 .single-tweet-user-tweet-content {
   display: flex;
@@ -65,6 +74,7 @@
   justify-content: space-around;
   padding: 1.2rem 0;
   border-bottom: 1px solid rgb(56, 68, 77);
+  height: 5rem;
 }
 .single-tweet-user-tweet-btns button {
   border: none;
@@ -128,4 +138,72 @@
   width: 4.8rem;
   height: 4.8rem;
   border-radius: 50%;
+}
+.tweet__icon--share {
+  padding: 0.8rem;
+  border-radius: 50%;
+  transition: all 150ms;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tweet__icon--share:hover {
+  background: rgb(28, 51, 70);
+}
+.tweet__icon--share:hover svg {
+  fill: rgb(29, 155, 240);
+}
+
+.tweet__icon--bookmark {
+  padding: 0.8rem;
+  border-radius: 50%;
+  transition: all 150ms;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tweet__icon--bookmark:hover {
+  background: rgb(25, 54, 58);
+}
+.tweet__icon--bookmark:hover svg {
+  fill: rgb(0, 186, 124);
+}
+
+.tweet__icon--heart {
+  padding: 0.8rem;
+  border-radius: 50%;
+  transition: all 150ms;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tweet__icon--heart:hover {
+  background: rgb(51, 37, 58);
+}
+.tweet__icon--heart:hover + span {
+  color: #f91880;
+}
+.tweet__icon--heart:hover svg {
+  fill: #f91880;
+}
+
+.tweet__icon--comment {
+  padding: 0.8rem;
+  border-radius: 50%;
+  transition: all 150ms;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tweet__icon--comment:hover {
+  background: rgb(28, 51, 70);
+}
+.tweet__icon--comment:hover svg {
+  fill: rgb(29, 155, 240);
+}
+.tweet__icon--comment:hover + span {
+  color: rgb(29, 155, 240);
+}
+.mar-top-esm {
+  margin-top: 0.2rem;
 }
