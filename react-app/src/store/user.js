@@ -6,6 +6,8 @@ const REMOVELIKE = "users/REMOVELIKE";
 const REMOVETWEET = "users/REMOVETWEET";
 const ADDBOOKMARKPROFILE = "users/ADDBOOKMARK";
 const REMOVEBOOKMARKPROFILE = "users/REMOVEBOOKMARK";
+const UPDATETWEET = "users/UPDATETWEET";
+const UPDATEUSERPRO = "users/UPDATE";
 
 const load = (user) => ({
   type: LOAD,
@@ -46,6 +48,65 @@ const removeTheTweet = (tweet_id) => ({
   type: REMOVETWEET,
   tweet_id,
 });
+
+const updateTweetProfile = (tweet) => ({
+  type: UPDATETWEET,
+  tweet,
+});
+
+const updateUserProfile = (user) => ({
+  type: UPDATEUSERPRO,
+  user,
+});
+
+export const updateProfile = (formData) => async (dispatch) => {
+  const response = await fetch(`/api/users/update/${formData.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  });
+
+  if (response.ok) {
+    const user = await response.json();
+    dispatch(updateUserProfile(user["user"]));
+  }
+};
+
+export const changeProfileData = (formData) => async (dispatch) => {
+  const { file, file2, user_id } = formData;
+  const form = new FormData();
+  form.append("file", file);
+  form.append("file2", file2);
+  form.append("user_id", user_id);
+  const response = await fetch(`/api/file/user`, {
+    method: "POST",
+    body: form,
+  });
+
+  if (response.ok) {
+    const returnData = await response.json();
+    console.log(returnData);
+    // dispatch(updateUserProfile(user["user"]));
+  }
+};
+
+export const updateTweetFromProfile = (formData) => async (dispatch) => {
+  const response = await fetch(`/api/tweets/${formData.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  });
+
+  if (response.ok) {
+    const tweet = await response.json();
+
+    dispatch(updateTweetProfile(tweet["tweet"]));
+  }
+};
 
 export const loadSingleUser = (data) => async (dispatch) => {
   const response = await fetch(`/api/users/user/${data["user_id"]}`);
@@ -183,12 +244,18 @@ const userReducer = (state = {}, action) => {
       function getLikeObject(object) {
         return object["id"] === action.like.tweet_id;
       }
+      // Phase 1
       const oldUserObject = { ...state };
       const oldUserTweetArray = oldUserObject["tweets"];
       const findTheDex = oldUserTweetArray.findIndex(getLikeObject);
       const theObject = oldUserTweetArray[findTheDex];
       theObject["like_count"]++;
       theObject["like_array"].push(action.like);
+
+      // Phase 2
+      const oldUserObject42069 = oldUserObject["likes"];
+      oldUserObject42069.push(theObject);
+
       return oldUserObject;
     case REMOVELIKE:
       function getLikeObject2(object) {
@@ -197,6 +264,7 @@ const userReducer = (state = {}, action) => {
       function getLikeObject3(object) {
         return object["id"] === action.data.like_id;
       }
+      // Phase 1
       const oldUserObject2 = { ...state };
       const oldUserTweetArray2 = oldUserObject2["tweets"];
       const findTheDex2 = oldUserTweetArray2.findIndex(getLikeObject2);
@@ -204,6 +272,12 @@ const userReducer = (state = {}, action) => {
       if (theObject2["like_count"] > 0) theObject2["like_count"]--;
       const findTheDex3 = theObject2["like_array"].findIndex(getLikeObject3);
       theObject2["like_array"].splice(findTheDex3, 1);
+
+      // Phase 2
+      const oldUserLikeArray2 = oldUserObject2["likes"];
+      const findTheDex69 = oldUserLikeArray2.findIndex(getLikeObject2);
+      oldUserLikeArray2.splice(findTheDex69, 1);
+
       return oldUserObject2;
     case REMOVETWEET:
       function findSpecificTweetObject(object) {
@@ -240,6 +314,22 @@ const userReducer = (state = {}, action) => {
       const theIndex000 = oldUserDataBookmarksReal0.findIndex(getTheUserObj40);
       oldUserDataBookmarksReal0.splice(theIndex000, 1);
       return oldUserData400;
+    case UPDATETWEET:
+      function getTheTweetUpdate(object) {
+        return object["id"] === action.tweet.id;
+      }
+      const updateUserDataObject = { ...state };
+      const updateUserDataObjectTweets = updateUserDataObject["tweets"];
+      const updateUserDataIndex =
+        updateUserDataObjectTweets.findIndex(getTheTweetUpdate);
+      updateUserDataObjectTweets[updateUserDataIndex]["tweet"] =
+        action.tweet.tweet;
+      return updateUserDataObject;
+    case UPDATEUSERPRO:
+      const theCurrentUser = { ...state };
+      theCurrentUser["name"] = action.user.name;
+      theCurrentUser["description"] = action.user.description;
+      return theCurrentUser;
     default:
       return state;
   }

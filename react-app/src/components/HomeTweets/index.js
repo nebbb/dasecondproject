@@ -3,12 +3,15 @@ import TweetCard from "../TweetCard";
 import "./HomeTweets.css";
 import { addTweet } from "../../store/tweets";
 import { useDispatch } from "react-redux";
+import Picker from "emoji-picker-react";
+import EmojiPicker from "emoji-picker-react";
 
 export default function HomeTweets({ tweets, user }) {
   const dispatch = useDispatch();
   const [tweetInput, setTweetInput] = useState("");
   const [tweetImage, setTweetImage] = useState(null);
   const [selectedTweet, setSelectedTweet] = useState(null);
+  const [toggle, setToggle] = useState(false);
   function removeModal(e) {
     // setTimeout(() => {
     if (document.querySelector(".tweet-option-dd"))
@@ -32,6 +35,11 @@ export default function HomeTweets({ tweets, user }) {
     dispatch(addTweet(tweet));
     setTweetInput("");
     setTweetImage(null);
+    setToggle(false);
+  }
+
+  function onEmojiClick(event, emojiObject) {
+    setTweetInput((oldInput) => (oldInput += emojiObject.emoji));
   }
 
   return (
@@ -59,7 +67,14 @@ export default function HomeTweets({ tweets, user }) {
           </svg>
           Delete
         </div>
-        <div className="dont-remove">
+        <div
+          className="dont-remove"
+          onClick={() =>
+            (document.querySelector(
+              `.tweet__card--edit__container-${selectedTweet}`
+            ).style.display = "block")
+          }
+        >
           <svg
             viewBox="0 0 24 24"
             aria-hidden="true"
@@ -121,7 +136,10 @@ export default function HomeTweets({ tweets, user }) {
                   </g>
                 </svg>
               </div>
-              <div className="home__tweet__btn--svg">
+              <div
+                className="home__tweet__btn--svg"
+                onClick={() => setToggle(!toggle)}
+              >
                 <svg
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -148,6 +166,12 @@ export default function HomeTweets({ tweets, user }) {
               </button>
             )}
           </div>
+          {toggle && (
+            <EmojiPicker
+              onEmojiClick={onEmojiClick}
+              pickerStyle={{ position: "absolute", top: "100%", left: "0" }}
+            />
+          )}
         </div>
       </div>
       {tweets &&

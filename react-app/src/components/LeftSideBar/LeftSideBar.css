@@ -6,6 +6,7 @@
   height: 100vh;
   position: sticky;
   top: 0;
+  user-select: none;
 }
 .left-side-bar--nav {
   display: flex;

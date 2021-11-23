@@ -33,7 +33,7 @@ export default function SearchBar() {
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
-      {input.length > 0 && results.length > 0 && (
+      {input.length > 1 && results.length > 0 && (
         <div className="search__bar-results--container">
           {results.map((result) => (
             <div

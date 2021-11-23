@@ -1,0 +1,56 @@
+.setting__section--container {
+  width: 45rem;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid rgb(56, 68, 77);
+  border-right: 1px solid rgb(56, 68, 77);
+  user-select: none;
+}
+.setting__section--setting {
+  padding: 1.6rem;
+}
+.setting__section--setting div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.setting__section--setting div:not(:last-child) {
+  margin-bottom: 2rem;
+}
+.setting__section--setting span {
+  color: #8899a6;
+  font-size: 1.6rem;
+}
+.setting__section--setting textarea,
+.setting__section--setting input {
+  border: 1px solid rgb(61, 84, 102);
+  outline: none;
+  background: none;
+  font-family: inherit;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 1.6rem;
+  padding: 1rem;
+  max-width: 100%;
+}
+.setting__section--setting button {
+  border: none;
+  outline: none;
+  background: #1d9bf0;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: inherit;
+  padding: 1rem 1.6rem;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: 150ms background;
+  display: block;
+  margin-left: auto;
+}
+.setting__section--setting button:hover {
+  background: rgb(26, 140, 216);
+}
+.setting__section--setting textarea {
+  height: 16rem;
+}

@@ -44,7 +44,10 @@ export default function CommentCard({ comment, user }) {
           <div>
             <span>{`@${comment?.["user"]["username"]}`}</span>
             <span>.</span>
-            <span className="comment-time">{`${comment?.["sent_date"]}`}</span>
+            <span className="comment-time">{`${comment?.["sent_date"]
+              ?.split(" ")
+              .slice(0, 4)
+              .join(" ")}`}</span>
           </div>
           {user.id === comment.user_id && (
             <button onClick={removeCommentFun}>

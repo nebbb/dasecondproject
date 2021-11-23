@@ -8,7 +8,7 @@ from flask_login import LoginManager
 from .models import db, User
 # from .api.user_routes import user_routes
 # from .api.auth_routes import auth_routes
-from .api import auth_routes, user_routes, bookmark_routes, comment_routes, follow_routes, like_routes, message_routes, tweet_routes
+from .api import auth_routes, user_routes, bookmark_routes, comment_routes, follow_routes, like_routes, message_routes, tweet_routes, file_routes
 
 from .seeds import seed_commands
 
@@ -38,6 +38,7 @@ app.register_blueprint(follow_routes, url_prefix='/api/follows')
 app.register_blueprint(like_routes, url_prefix='/api/likes')
 app.register_blueprint(message_routes, url_prefix='/api/messages')
 app.register_blueprint(tweet_routes, url_prefix='/api/tweets')
+app.register_blueprint(file_routes, url_prefix='/api/file')
 db.init_app(app)
 Migrate(app, db)
 

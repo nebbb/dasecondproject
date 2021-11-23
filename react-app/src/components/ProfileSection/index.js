@@ -23,6 +23,7 @@ export default function ProfileSection({ user, userId, currentUser }) {
     // }, 5000);
   }
 
+
   useEffect(() => {
     document.body.addEventListener("click", removeModal);
     return () => document.body.removeEventListener("click", removeModal);
@@ -68,7 +69,14 @@ export default function ProfileSection({ user, userId, currentUser }) {
           </svg>
           Delete
         </div>
-        <div className="dont-remove">
+        <div
+          className="dont-remove"
+          onClick={() =>
+            (document.querySelector(
+              `.tweet__card--edit__container-${selectedTweet}`
+            ).style.display = "block")
+          }
+        >
           <svg
             viewBox="0 0 24 24"
             aria-hidden="true"
@@ -98,7 +106,18 @@ export default function ProfileSection({ user, userId, currentUser }) {
         <span>{currentUser?.username}</span>
       </div>
       <div className="profile__section--container-top">
-        <div className="profile__section--container-top-spit-t">
+        <div
+          className="profile__section--container-top-spit-t"
+          style={
+            currentUser?.banner_pic?.length
+              ? {
+                  backgroundImage: `url(${currentUser?.banner_pic})`,
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                }
+              : {}
+          }
+        >
           <img
             alt="profile-pic"
             className="profile__section--container-top-spit-t-image"
@@ -130,7 +149,10 @@ export default function ProfileSection({ user, userId, currentUser }) {
                   <circle cx="12" cy="17.486" r="1.285"></circle>
                 </g>
               </svg>
-              <span className="user-profile--joined">{`Joined ${currentUser?.created_at}`}</span>
+              <span className="user-profile--joined">{`Joined ${currentUser?.created_at
+                ?.split(" ")
+                .slice(0, 4)
+                .join(" ")}`}</span>
             </div>
             <div className="user-profile-stats">
               <span>{currentUser?.following?.length} Following</span>
@@ -183,7 +205,16 @@ export default function ProfileSection({ user, userId, currentUser }) {
               setSelectedTweet={setSelectedTweet}
             />
           ))}
-        {pageSection === "likes" && "Likes section"}
+        {pageSection === "likes" &&
+          currentUser?.likes &&
+          currentUser?.likes.map((tweet) => (
+            <TweetCard
+              tweet={tweet}
+              user={user}
+              likesPage={true}
+              setSelectedTweet={setSelectedTweet}
+            />
+          ))}
       </div>
     </div>
   );

@@ -27,7 +27,7 @@ def get_a_user(id):
     user_dict = user.to_dict()
 
     tweets = db.session.query(Tweet).filter(Tweet.user_id==id).all()
-    likes = db.session.query(Like).filter(Like.user_id==id).all()
+    the_likes = db.session.query(Like).filter(Like.user_id==id).all()
     follows = db.session.query(Follow).filter(Follow.sender==id).all()
     followers = db.session.query(Follow).filter(Follow.reciever==id).all()
 
@@ -52,7 +52,7 @@ def get_a_user(id):
 
         tweet_loop.append(tweet_dict)
 
-    for like in likes:
+    for like in the_likes:
         like_dict = like.to_dict()
         tweet = Tweet.query.get(like_dict["tweet_id"])
         tweet_dict = tweet.to_dict()
@@ -97,3 +97,17 @@ def load_users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+
+# Update Tweet
+@user_routes.route('/update/<int:id>', methods =['PUT'])
+@login_required
+def update_a_user(id):
+    user = User.query.get(id)
+    data = request.json
+
+    user.name = data["name"]
+    user.description = data["description"]
+    db.session.commit()
+
+    return {"user": user.to_dict()}

@@ -16,6 +16,7 @@ import {
   removeTweetFromProfile,
   bookmarkATweetFromProfile,
   unBookmarkATweetFromProfile,
+  updateTweetFromProfile,
 } from "../../store/user";
 import { removeBookmarkFromBookmark } from "../../store/bookmarks";
 import { Link } from "react-router-dom";
@@ -26,6 +27,7 @@ export default function TweetCard({
   setSelectedTweet,
   hide,
   profile,
+  likesPage,
 }) {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -102,19 +104,17 @@ export default function TweetCard({
   }
 
   // <button onClick={deleteATweetFun}>Remove</button>
-  // <form onSubmit={updateATweetFun}>
-  //   <input
-  //     placeholder="Edit tweet"
-  //     value={editInput}
-  //     onChange={(e) => setEditInput(e.target.value)}
-  //   />
-  //   <button>Update</button>
-  // </form>
+
   function updateATweetFun(e) {
     e.preventDefault();
     const data = { tweet: editInput, id: tweet.id };
-    dispatch(updateTweet(data));
+    if (profile) {
+      dispatch(updateTweetFromProfile(data));
+    } else {
+      dispatch(updateTweet(data));
+    }
     setEditInput("");
+    return;
   }
 
   function deleteATweetFun() {
@@ -180,6 +180,31 @@ export default function TweetCard({
           </button>
         </div>
       </div>
+      <div
+        className={`tweet__card--delete__container tweet__card--edit__container-${tweet.id}`}
+      >
+        <div className="tweet__card--delete--modal">
+          <h3>Edit Tweet</h3>
+          <form onSubmit={updateATweetFun}>
+            <input
+              placeholder="Edit tweet"
+              value={editInput}
+              onChange={(e) => setEditInput(e.target.value)}
+            />
+            <button>Update</button>
+          </form>
+          <button
+            className="tweet__card--delete--can"
+            onClick={() =>
+              (document.querySelector(
+                `.tweet__card--edit__container-${tweet.id}`
+              ).style.display = "none")
+            }
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
       <div className="tweet__card--top">
         <div className="tweet__card--profile-pic">
           <img
@@ -198,8 +223,11 @@ export default function TweetCard({
             </span>
             <span className="tweet__username">{`@${tweet["user"]["username"]}`}</span>
             <span className="tweet__dot">·</span>
-            <span className="tweet__created">{`${tweet["sent_date"]}`}</span>
-            {tweet.user_id === user.id && !hide && (
+            <span className="tweet__created">{`${tweet["sent_date"]
+              ?.split(" ")
+              .slice(0, 4)
+              .join(" ")}`}</span>
+            {tweet.user_id === user.id && !hide && !likesPage && (
               <button
                 onClick={(e) => {
                   showDropdown(e);
@@ -255,7 +283,7 @@ export default function TweetCard({
             />
           ) : null}
         </div>
-        {!hide && (
+        {!hide && !likesPage && (
           <div className="tweet__card--details">
             <div className="tweet__icon">
               <div className="tweet__icon--comment">
