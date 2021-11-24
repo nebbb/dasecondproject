@@ -7,3 +7,4 @@ from .likes import like_routes
 from .messages import message_routes
 from .tweets import tweet_routes
 from .files import file_routes
+from .channels import channel_routes

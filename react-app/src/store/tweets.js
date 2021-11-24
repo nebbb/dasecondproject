@@ -66,12 +66,29 @@ export const loadSingleTweet = (tweet_id) => async (dispatch) => {
 };
 
 export const addTweet = (formData) => async (dispatch) => {
-  const response = await fetch("/api/tweets/add", {
+  const { user_id, tweet, image } = formData;
+  const form = new FormData();
+  form.append("user_id", user_id);
+  form.append("tweet", tweet);
+  form.append("image", image);
+
+  // const response = await fetch("/api/tweets/add", {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify(formData),
+  // });
+
+  // if (response.ok) {
+  //   const tweet = await response.json();
+
+  //   dispatch(add(tweet["tweet"]));
+  // }
+
+  const response = await fetch("/api/file/add", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(formData),
+    body: form,
   });
 
   if (response.ok) {

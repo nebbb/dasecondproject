@@ -1,11 +1,127 @@
 .login__page-container {
   display: flex;
   align-items: center;
+  height: 100vh;
+  width: 100vw;
+  color: #fff;
+  user-select: none;
 }
 .login--left-side {
+  flex: 0 0 58%;
   background-image: url("https://abs.twimg.com/sticky/illustrations/lohp_en_1302x955.png");
   background-size: cover;
   background-position: center;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.login--left-side div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .login--right-side {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+}
+.p-243asa {
+  fill: #fff !important;
+  width: 40rem !important;
+  height: 40rem !important;
+}
+.p-243asab {
+  fill: #fff !important;
+  width: 5rem !important;
+  height: 5rem !important;
+  margin: 7rem 0;
+}
+.login--right-side {
+  padding: 4rem;
+}
+.login--right-side h2 {
+  font-size: 6.4rem;
+  letter-spacing: 0.4px;
+  font-weight: 900;
+  margin-bottom: 4.5rem;
+}
+.login--right-side h3 {
+  font-size: 3.1rem;
+  letter-spacing: 0.2px;
+  font-weight: 900;
+  margin-bottom: 2.25rem;
+}
+.login--right-side button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+  border-radius: 100px;
+  font-weight: 600;
+  font-family: inherit;
+  font-size: 1.6rem;
+  display: block;
+  width: 100%;
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  transition: 150ms background;
+}
+.login--right-side span {
+  color: rgb(136, 153, 166);
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 6rem;
+}
+.login--right-side p {
+  font-weight: 600;
+  font-size: 1.7rem;
+}
+.login__page-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 4rem;
+  background-color: #15202b;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 6rem;
+  color: rgb(136, 153, 166);
+  font-size: 1.3rem;
+}
+button.login-btn-demo {
+  background-color: #fff;
+  margin-bottom: 1rem;
+}
+button.login-btn-sign-up {
+  background-color: #1c97ea;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+button.login-btn-sign-in {
+  background: none;
+  color: #fff;
+  border: 1px solid #536471;
+  margin-top: 2rem;
+}
+.login-wrapper {
+  max-width: 30rem;
+}
+.or-line-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.just-line {
+  height: 1px;
+  background-color: #38444d;
+  display: block;
+  width: 100%;
 }

@@ -21,6 +21,7 @@
   width: inherit;
   height: inherit;
   border-radius: 50%;
+  object-fit: cover;
 }
 .home__tweets--right {
   flex: 1;
@@ -30,6 +31,15 @@
 }
 .home__tweets--right--top {
   flex: 1;
+}
+.home__tweets--right--top img {
+  display: block;
+  max-width: 100%;
+  margin: 2rem 0;
+  border-radius: 1.5rem;
+  cursor: pointer;
+  border: 1px solid rgb(56, 68, 77);
+  max-height: 73rem;
 }
 .home__tweets--right--bottom {
   display: flex;
@@ -44,11 +54,21 @@
   border: none;
   outline: none;
   background: none;
-  height: 100%;
   width: 100%;
   color: #fff;
   font-family: inherit;
   font-size: 2rem;
+  max-width: 100%;
+  min-width: 100%;
+}
+#root
+  > div
+  > div.home__tweets--container
+  > div.home__tweets--create
+  > div.home__tweets--right
+  > div.home__tweets--right--top
+  > textarea {
+  max-width: 51.3rem;
 }
 .home__tweet--create--input::placeholder {
   color: rgb(136, 153, 166);
@@ -124,4 +144,7 @@
 }
 .kansd-00 {
   fill: rgb(244, 33, 46);
+}
+#post-pic {
+  display: none;
 }

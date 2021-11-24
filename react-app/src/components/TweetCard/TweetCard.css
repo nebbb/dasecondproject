@@ -11,6 +11,9 @@
   gap: 0.4rem;
   padding-bottom: 0.6rem;
 }
+.tweet__card--container:last-child {
+  margin-bottom: 10rem;
+}
 .tweet__card--container {
   border-bottom: 1px solid rgb(56, 68, 77);
 }
@@ -30,6 +33,7 @@
   height: inherit;
   width: inherit;
   border-radius: 50%;
+  object-fit: cover;
 }
 .tweet__card--content {
   display: flex;

@@ -20,6 +20,7 @@ import {
 } from "../../store/user";
 import { removeBookmarkFromBookmark } from "../../store/bookmarks";
 import { Link } from "react-router-dom";
+import { useAlert } from "react-alert";
 
 export default function TweetCard({
   tweet,
@@ -29,6 +30,7 @@ export default function TweetCard({
   profile,
   likesPage,
 }) {
+  const alert = useAlert();
   const history = useHistory();
   const dispatch = useDispatch();
   const [editInput, setEditInput] = useState("");
@@ -371,7 +373,15 @@ export default function TweetCard({
               )}
             </div>
             <div className="tweet__icon">
-              <div className="tweet__icon--share">
+              <div
+                className="tweet__icon--share"
+                onClick={() => {
+                  alert.show("Copied to clipboard");
+                  navigator.clipboard.writeText(
+                    `https://aa-twitta.herokuapp.com/status/${tweet["id"]}`
+                  );
+                }}
+              >
                 <svg
                   viewBox="0 0 24 24"
                   aria-hidden="true"

@@ -12,6 +12,7 @@
   margin-bottom: 1rem;
 }
 .single-tweet-user-left-pic {
+  cursor: pointer;
   border-radius: 50%;
   width: 4.8rem;
   height: 4.8rem;

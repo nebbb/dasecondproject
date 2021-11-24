@@ -8,8 +8,10 @@ import {
   addABookmarkFromTweets,
   removeABookmarkFromTweets,
 } from "../../store/tweets";
+import { useHistory } from "react-router";
 
 export default function SingleTweetCard({ tweet, user }) {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [replyInput, setReplyInput] = useState("");
 
@@ -72,7 +74,10 @@ export default function SingleTweetCard({ tweet, user }) {
       <div className="padding-wrapper-single--tweet">
         <div className="single-tweet-card--top">
           <div className="single-tweet-user-details">
-            <div className="single-tweet-user-left">
+            <div
+              className="single-tweet-user-left"
+              onClick={() => history.push(`/profile/${tweet?.user.id}`)}
+            >
               <img
                 className="single-tweet-user-left-pic"
                 src={tweet?.user.profile_pic}
@@ -81,7 +86,10 @@ export default function SingleTweetCard({ tweet, user }) {
             </div>
             <div className="single-tweet-user-right">
               <div className="single-tweet-user-right-top">
-                <span className="single-tweet-user-right-top-t">{`${tweet?.user.name}`}</span>
+                <span
+                  className="single-tweet-user-right-top-t"
+                  onClick={() => history.push(`/profile/${tweet?.user.id}`)}
+                >{`${tweet?.user.name}`}</span>
                 <span>{`@${tweet?.user.username}`}</span>
               </div>
               <div className="single-tweet-user-right-bottom"></div>

@@ -61,11 +61,26 @@ class Tweet(db.Model):
             'sent_date': self.sent_date,
         }
 
+class DMChannel(db.Model):
+    __tablename__ = 'dmchannels'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id", ondelete='CASCADE'), nullable=False, )
+    user_id2 = db.Column(db.Integer, db.ForeignKey("users.id", ondelete='CASCADE'), nullable=False, )
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'user_id2': self.user_id2,
+        }
+
+
 class Message(db.Model):
     __tablename__ = 'messages'
     id = db.Column(db.Integer, primary_key=True)
     sender = db.Column(db.Integer, db.ForeignKey("users.id", ondelete='CASCADE'), nullable=False, )
     reciever = db.Column(db.Integer, db.ForeignKey("users.id", ondelete='CASCADE'), nullable=False, )
+    dm_channel_id = db.Column(db.Integer, db.ForeignKey("dmchannels.id", ondelete='CASCADE'), nullable=False)
     message = db.Column(db.Text, nullable=False)
     sent_date = db.Column(db.DateTime(timezone=False), nullable=False)
 
@@ -74,6 +89,7 @@ class Message(db.Model):
             'id': self.id,
             'sender': self.sender,
             'reciever': self.reciever,
+            'dm_channel_id': self.dm_channel_id,
             'message': self.message,
             'sent_date': self.sent_date,
         }

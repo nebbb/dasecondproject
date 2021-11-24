@@ -71,6 +71,7 @@ a span svg,
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
+  object-fit: cover;
 }
 .leftside__footer {
   display: flex;

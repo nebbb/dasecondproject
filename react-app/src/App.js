@@ -15,6 +15,8 @@ import BookmarkPage from "./components/BookmarkPage";
 import MessagePage from "./components/MessagePage";
 import ProfilePage from "./components/ProfilePage";
 import SettingPage from "./components/SettingPage";
+import { transitions, positions, Provider as AlertProvider } from "react-alert";
+import AlertTemplate from "react-alert-template-basic";
 
 import { authenticate } from "./store/session";
 
@@ -35,44 +37,49 @@ function App() {
     return null;
   }
 
+  const options = {
+    position: positions.BOTTOM_CENTER,
+    timeout: 5000,
+    offset: "30px",
+    transition: transitions.SCALE,
+  };
+
   return (
     <BrowserRouter>
-      {/* <NavBar /> */}
-      <Switch>
-        <Route path="/login" exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path="/sign-up" exact={true}>
-          <SignUpForm />
-        </Route>
-        {/* <ProtectedRoute path="/users" exact={true}>
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true}>
-          <User />
-        </ProtectedRoute> */}
-        <ProtectedRoute path="/" exact={true}>
-          <HomePage />
-        </ProtectedRoute>
-        <ProtectedRoute path="/explore" exact={true}>
-          <ExplorePage />
-        </ProtectedRoute>
-        <ProtectedRoute path="/bookmarks" exact={true}>
-          <BookmarkPage />
-        </ProtectedRoute>
-        <ProtectedRoute path="/messages" exact={true}>
-          <MessagePage />
-        </ProtectedRoute>
-        <ProtectedRoute path="/account" exact={true}>
-          <SettingPage />
-        </ProtectedRoute>
-        <ProtectedRoute path="/profile/:profileId" exact={true}>
-          <ProfilePage />
-        </ProtectedRoute>
-        <ProtectedRoute path="/status/:tweetId" exact={true}>
-          <TweetPage />
-        </ProtectedRoute>
-      </Switch>
+      <AlertProvider template={AlertTemplate} {...options}>
+        <Switch>
+          <Route path="/login" exact={true}>
+            <LoginForm />
+          </Route>
+          <Route path="/sign-up" exact={true}>
+            <SignUpForm />
+          </Route>
+          <Route path="/logintest" exact={true}>
+            <LoginPage />
+          </Route>
+          <ProtectedRoute path="/" exact={true}>
+            <HomePage />
+          </ProtectedRoute>
+          <ProtectedRoute path="/explore" exact={true}>
+            <ExplorePage />
+          </ProtectedRoute>
+          <ProtectedRoute path="/bookmarks" exact={true}>
+            <BookmarkPage />
+          </ProtectedRoute>
+          <ProtectedRoute path="/messages" exact={true}>
+            <MessagePage />
+          </ProtectedRoute>
+          <ProtectedRoute path="/account" exact={true}>
+            <SettingPage />
+          </ProtectedRoute>
+          <ProtectedRoute path="/profile/:profileId" exact={true}>
+            <ProfilePage />
+          </ProtectedRoute>
+          <ProtectedRoute path="/status/:tweetId" exact={true}>
+            <TweetPage />
+          </ProtectedRoute>
+        </Switch>
+      </AlertProvider>
     </BrowserRouter>
   );
 }

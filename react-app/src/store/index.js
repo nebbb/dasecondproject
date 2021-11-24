@@ -6,6 +6,8 @@ import users from "./users";
 import bookmarks from "./bookmarks";
 import user from "./user";
 import search from "./search";
+import channels from "./channels";
+import messages from "./messages";
 
 const rootReducer = combineReducers({
   session,
@@ -14,6 +16,8 @@ const rootReducer = combineReducers({
   bookmarks,
   user,
   search,
+  channels,
+  messages,
 });
 
 let enhancer;
