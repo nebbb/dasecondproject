@@ -12,7 +12,7 @@ export default function SearchBar() {
 
   useEffect(() => {
     const data = { input };
-    dispatch(searchResults(data));
+    if (input.length > 0) dispatch(searchResults(data));
   }, [input, dispatch]);
 
   return (

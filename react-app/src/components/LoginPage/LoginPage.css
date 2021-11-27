@@ -119,9 +119,17 @@ button.login-btn-sign-in {
   gap: 1rem;
   margin: 1rem 0;
 }
+.or-line-holder h4 {
+  font-size: 1.6rem;
+}
 .just-line {
   height: 1px;
   background-color: #38444d;
   display: block;
   width: 100%;
+}
+.login__page-footer span {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }

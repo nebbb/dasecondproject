@@ -27,6 +27,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* GLOBAL COMPONENT STYLES */
+
 .tweet-option-dd {
   overflow: hidden;
 }
@@ -47,4 +50,7 @@ body {
 }
 .tweet-option-dd div:hover {
   background: rgb(28, 39, 50);
+}
+.emoji-picker-react input.emoji-search {
+  color: #000 !important;
 }

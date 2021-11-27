@@ -23,6 +23,7 @@ export const postAChannel = (data) => async (dispatch) => {
   if (response.ok) {
     const channel = await response.json();
     dispatch(add(channel["channel"]));
+    return channel["channel"];
   }
 };
 

@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./LeftSideBar.css";
 import { NavLink } from "react-router-dom";
+import { useLocation } from "react-router";
 import {
   twitter,
   home,
@@ -9,12 +10,45 @@ import {
   profile,
   bookmarks,
   more,
+  notification,
+  boldHome,
+  boldExplore,
+  boldNotifications,
+  boldMessages,
+  boldBookmarks,
+  boldProfile,
+  boldMore,
 } from "./icons";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
+import { loadTheNotifications } from "../../store/notifications";
 
 export default function LeftSideBar({ user }) {
   const dispatch = useDispatch();
+  const currentURL = useLocation();
+  const [num, setNum] = useState(0);
+
+  useEffect(() => {
+    const data = {
+      user_id: user.id,
+    };
+    dispatch(loadTheNotifications(data));
+    if (currentURL.pathname === "/") {
+      setNum(1);
+    } else if (currentURL.pathname.includes("explore")) {
+      setNum(2);
+    } else if (currentURL.pathname.includes("notifications")) {
+      setNum(3);
+    } else if (currentURL.pathname.includes("messages")) {
+      setNum(4);
+    } else if (currentURL.pathname.includes("bookmarks")) {
+      setNum(5);
+    } else if (currentURL.pathname.includes("profile")) {
+      setNum(6);
+    } else if (currentURL.pathname.includes("account")) {
+      setNum(7);
+    }
+  }, [dispatch]);
 
   async function logOutUser() {
     await dispatch(logout());
@@ -25,22 +59,27 @@ export default function LeftSideBar({ user }) {
       <div>{twitter}</div>
       <nav className="left-side-bar--nav">
         <NavLink to="/" exact activeClassName="active--link">
-          <span>{home} Home</span>
+          <span>{num === 1 ? boldHome : home} Home</span>
         </NavLink>
         <NavLink to="/explore" activeClassName="active--link">
-          <span>{explore} Explore</span>
+          <span>{num === 2 ? boldExplore : explore} Explore</span>
+        </NavLink>
+        <NavLink to="/notifications" activeClassName="active--link">
+          <span>
+            {num === 3 ? boldNotifications : notification} Notifications
+          </span>
         </NavLink>
         <NavLink to="/messages" activeClassName="active--link">
-          <span>{messages} Messages</span>
+          <span>{num === 4 ? boldMessages : messages} Messages</span>
         </NavLink>
         <NavLink to="/bookmarks" activeClassName="active--link">
-          <span>{bookmarks} Bookmarks</span>
+          <span>{num === 5 ? boldBookmarks : bookmarks} Bookmarks</span>
         </NavLink>
         <NavLink to={`/profile/${user.id}`} activeClassName="active--link">
-          <span>{profile} Profile</span>
+          <span>{num === 6 ? boldProfile : profile} Profile</span>
         </NavLink>
         <NavLink to="/account" activeClassName="active--link">
-          <span>{more} More</span>
+          <span>{num === 7 ? boldMore : more} More</span>
         </NavLink>
       </nav>
       <button>Tweet</button>

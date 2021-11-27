@@ -96,9 +96,7 @@
   font-weight: 600;
   color: rgb(239, 243, 244);
   transition: 150ms background;
-  position: absolute;
-  top: -16%;
-  right: 2%;
+  /* position: absolute; */
 }
 .user-profile--edit-del {
   display: block;
@@ -112,9 +110,7 @@
   font-weight: 600;
   color: rgb(15, 20, 25);
   transition: 150ms background;
-  position: absolute;
-  top: -16%;
-  right: 2%;
+  /* position: absolute; */
 }
 .user-profile--edit-following {
   display: block;
@@ -129,11 +125,30 @@
   font-weight: 600;
   color: rgb(239, 243, 244);
   transition: 150ms background;
-  position: absolute;
-  top: -16%;
-  right: 2%;
+  /* position: absolute; */
+}
+.user-profile--message-btn {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border: 1px solid rgb(83, 100, 113);
+  border-radius: 100px;
+  width: 3.7rem;
+  height: 3.7rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: rgb(239, 243, 244);
+  transition: 150ms background;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* position: absolute; */
 }
 .user-profile--edit-btn:hover {
+  background: rgb(44, 54, 64);
+}
+.user-profile--message-btn:hover {
   background: rgb(44, 54, 64);
 }
 .user-profile--edit-following:hover {
@@ -153,4 +168,12 @@
   color: #fff;
   display: block;
   margin-bottom: 1rem;
+}
+.button-holders {
+  top: -16%;
+  right: 2%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: absolute;
 }

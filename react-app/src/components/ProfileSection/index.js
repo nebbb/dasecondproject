@@ -23,7 +23,6 @@ export default function ProfileSection({ user, userId, currentUser }) {
     // }, 5000);
   }
 
-
   useEffect(() => {
     document.body.addEventListener("click", removeModal);
     return () => document.body.removeEventListener("click", removeModal);
@@ -158,31 +157,46 @@ export default function ProfileSection({ user, userId, currentUser }) {
               <span>{currentUser?.following?.length} Following</span>
               <span>{currentUser?.followers?.length} Followers</span>
             </div>
-
-            {user.id === +userId ? (
+            <div className="button-holders">
               <button
-                className="user-profile--edit-btn"
-                onClick={redirectToSettings}
+                className="user-profile--message-btn"
+                onClick={() => history.push("/messages")}
               >
-                Edit profile
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  className="r-4qtqp9 r-yyyyoo r-z80fyv r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-19wmn03"
+                >
+                  <g>
+                    <path d="M19.25 3.018H4.75C3.233 3.018 2 4.252 2 5.77v12.495c0 1.518 1.233 2.753 2.75 2.753h14.5c1.517 0 2.75-1.235 2.75-2.753V5.77c0-1.518-1.233-2.752-2.75-2.752zm-14.5 1.5h14.5c.69 0 1.25.56 1.25 1.25v.714l-8.05 5.367c-.273.18-.626.182-.9-.002L3.5 6.482v-.714c0-.69.56-1.25 1.25-1.25zm14.5 14.998H4.75c-.69 0-1.25-.56-1.25-1.25V8.24l7.24 4.83c.383.256.822.384 1.26.384.44 0 .877-.128 1.26-.383l7.24-4.83v10.022c0 .69-.56 1.25-1.25 1.25z"></path>
+                  </g>
+                </svg>
               </button>
-            ) : currentUser?.followers?.find(
-                (followObj) => followObj.sender === user.id
-              ) ? (
-              <button
-                className="user-profile--edit-following"
-                onClick={unFollowAUserFun}
-              >
-                Following
-              </button>
-            ) : (
-              <button
-                className="user-profile--edit-del"
-                onClick={followAUserFun}
-              >
-                Follow
-              </button>
-            )}
+              {user.id === +userId ? (
+                <button
+                  className="user-profile--edit-btn"
+                  onClick={redirectToSettings}
+                >
+                  Edit profile
+                </button>
+              ) : currentUser?.followers?.find(
+                  (followObj) => followObj.sender === user.id
+                ) ? (
+                <button
+                  className="user-profile--edit-following"
+                  onClick={unFollowAUserFun}
+                >
+                  Following
+                </button>
+              ) : (
+                <button
+                  className="user-profile--edit-del"
+                  onClick={followAUserFun}
+                >
+                  Follow
+                </button>
+              )}
+            </div>
           </div>
           <div className="user-profile-menu">
             <div onClick={() => setPageSection("tweets")}>

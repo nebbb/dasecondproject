@@ -1,0 +1,35 @@
+.notifications__section--container {
+  width: 59.8rem;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid rgb(56, 68, 77);
+  border-right: 1px solid rgb(56, 68, 77);
+}
+.notification__card--container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 2rem;
+  transition: 150ms background;
+  cursor: pointer;
+}
+.notification__card--container:hover {
+  background: rgb(25, 39, 52);
+}
+.notification__card--container-left img {
+  width: 4.8rem;
+  height: 4.8rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.notification__card--container:not(:last-child) {
+  border-bottom: 1px solid #38444d;
+}
+.notification__card--container:first-child {
+  border-bottom: 1px solid #38444d;
+}
+.notification__card--container-right span {
+  font-size: 1.5rem;
+  color: #fff;
+}

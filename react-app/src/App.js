@@ -15,6 +15,7 @@ import BookmarkPage from "./components/BookmarkPage";
 import MessagePage from "./components/MessagePage";
 import ProfilePage from "./components/ProfilePage";
 import SettingPage from "./components/SettingPage";
+import NotificationPage from "./components/NotificationPage";
 import { transitions, positions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 
@@ -62,6 +63,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path="/explore" exact={true}>
             <ExplorePage />
+          </ProtectedRoute>
+          <ProtectedRoute path="/notifications" exact={true}>
+            <NotificationPage />
           </ProtectedRoute>
           <ProtectedRoute path="/bookmarks" exact={true}>
             <BookmarkPage />

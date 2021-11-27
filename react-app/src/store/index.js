@@ -8,6 +8,8 @@ import user from "./user";
 import search from "./search";
 import channels from "./channels";
 import messages from "./messages";
+import finds from "./finds";
+import notifications from "./notifications";
 
 const rootReducer = combineReducers({
   session,
@@ -18,6 +20,8 @@ const rootReducer = combineReducers({
   search,
   channels,
   messages,
+  finds,
+  notifications,
 });
 
 let enhancer;

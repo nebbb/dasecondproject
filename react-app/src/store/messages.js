@@ -44,7 +44,9 @@ const messageReducer = (state = {}, action) => {
       }
       return newState;
     case ADD:
-      return { ...state, [action.message.id]: action.message };
+      // return { ...state, [action.message.id]: action.message };
+      return { ...state };
+
     default:
       return state;
   }

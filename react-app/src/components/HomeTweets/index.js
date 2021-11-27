@@ -183,7 +183,12 @@ export default function HomeTweets({ tweets, user }) {
           {toggle && (
             <EmojiPicker
               onEmojiClick={onEmojiClick}
-              pickerStyle={{ position: "absolute", top: "100%", left: "0" }}
+              pickerStyle={{
+                position: "absolute",
+                top: "100%",
+                left: "0",
+                boxShadow: "none",
+              }}
             />
           )}
         </div>

@@ -8,9 +8,11 @@ import {
   addABookmarkFromTweets,
   removeABookmarkFromTweets,
 } from "../../store/tweets";
+import { useAlert } from "react-alert";
 import { useHistory } from "react-router";
 
 export default function SingleTweetCard({ tweet, user }) {
+  const alert = useAlert();
   const history = useHistory();
   const dispatch = useDispatch();
   const [replyInput, setReplyInput] = useState("");
@@ -199,7 +201,15 @@ export default function SingleTweetCard({ tweet, user }) {
               )}
             </div>
             <div className="tweet__icon">
-              <div className="tweet__icon--share">
+              <div
+                className="tweet__icon--share"
+                onClick={() => {
+                  alert.show("Copied to clipboard");
+                  navigator.clipboard.writeText(
+                    `https://aa-twitta.herokuapp.com/status/${tweet["id"]}`
+                  );
+                }}
+              >
                 <svg
                   viewBox="0 0 24 24"
                   aria-hidden="true"

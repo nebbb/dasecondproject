@@ -138,13 +138,16 @@
   right: 0;
   left: 0;
   bottom: 0;
-  z-index: 1000;
+  z-index: 10000000;
   width: 100vw;
   height: 100vh;
   background: rgba(91, 112, 131, 0.4);
   /* display: flex;
   align-items: center;
   justify-content: center; */
+}
+.tweet__card--delete__container-2 {
+  display: block !important;
 }
 .tweet__card--delete--modal {
   position: absolute;

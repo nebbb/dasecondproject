@@ -154,3 +154,24 @@ class Bookmark(db.Model):
             'user_id': self.user_id,
             'tweet_id': self.tweet_id,
         }
+
+
+
+class Notification(db.Model):
+    __tablename__ = 'notifications'
+    id = db.Column(db.Integer, primary_key=True)
+    reciever = db.Column(db.Integer)
+    sender = db.Column(db.Integer)
+    message = db.Column(db.String)
+    link = db.Column(db.String)
+    read = db.Column(db.Boolean, default=False )
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'reciever': self.reciever,
+            'sender': self.sender,
+            'message': self.message,
+            'link': self.link,
+            'read': self.read,
+        }

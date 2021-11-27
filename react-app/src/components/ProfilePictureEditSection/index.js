@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./ProfilePictureEditSection.css";
 import { changeProfileData } from "../../store/user";
 import { useDispatch } from "react-redux";
+import { loadSingleUser } from "../../store/user";
+import { authenticate } from "../../store/session";
 
 export default function ProfilePictureEditSection({
   user,
@@ -33,7 +35,7 @@ export default function ProfilePictureEditSection({
       file2: currentBannerURL,
       user_id: user.id,
     };
-    dispatch(changeProfileData(data));
+    dispatch(changeProfileData(data)).then(() => dispatch(authenticate()));
   }
 
   return (
