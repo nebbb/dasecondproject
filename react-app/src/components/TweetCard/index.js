@@ -157,7 +157,7 @@ export default function TweetCard({
       <div
         className={`tweet__card--delete__container tweet__card--delete__container-${tweet.id}`}
       >
-        <div className="tweet__card--delete--modal">
+        <div className="tweet__card--delete--modal stay-closed-2-sp">
           <h3>Delete Tweet?</h3>
           <p>
             This can’t be undone and it will be removed from your profile, the
@@ -185,7 +185,7 @@ export default function TweetCard({
       <div
         className={`tweet__card--delete__container tweet__card--edit__container-${tweet.id}`}
       >
-        <div className="tweet__card--delete--modal">
+        <div className="tweet__card--delete--modal stay-closed-2-sp">
           <h3>Edit Tweet</h3>
           <form onSubmit={updateATweetFun}>
             <input
