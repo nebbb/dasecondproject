@@ -132,7 +132,7 @@
   background: rgb(28, 51, 70);
 }
 .tweet__card--delete__container {
-  display: none;
+  display: none !important;
   position: fixed;
   top: 0;
   right: 0;
@@ -146,7 +146,7 @@
   align-items: center;
   justify-content: center; */
 }
-.tweet__card--delete__container-2 {
+.tweet__card--delete__container-t2 {
   display: block !important;
 }
 .tweet__card--delete--modal {

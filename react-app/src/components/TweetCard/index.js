@@ -155,7 +155,7 @@ export default function TweetCard({
   return (
     <div className="tweet__card--container">
       <div
-        className={`tweet__card--delete__container tweet__card--delete__container-${tweet.id} stay-closed-2-sp`}
+        className={`tweet__card--delete__container tweet__card--delete__container-${tweet.id}`}
       >
         <div className="tweet__card--delete--modal">
           <h3>Delete Tweet?</h3>
@@ -183,7 +183,7 @@ export default function TweetCard({
         </div>
       </div>
       <div
-        className={`tweet__card--delete__container tweet__card--edit__container-${tweet.id} stay-closed-2-sp`}
+        className={`tweet__card--delete__container tweet__card--edit__container-${tweet.id}`}
       >
         <div className="tweet__card--delete--modal">
           <h3>Edit Tweet</h3>

@@ -55,6 +55,6 @@ body {
   color: #000 !important;
 }
 
-.stay-closed-2-sp {
-  display: none !important;
+.tweet__card--delete__container {
+  display: none!;
 }

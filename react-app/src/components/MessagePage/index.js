@@ -43,7 +43,7 @@ export default function MessagePage() {
   return (
     <div className="message__page--container">
       {modal && (
-        <div className="tweet__card--delete__container tweet__card--delete__container-2">
+        <div className="tweet__card--delete__container tweet__card--delete__container-t2">
           <div className="tweet__card--delete--modal tweet__card--delete--modal-2">
             <header>
               <button onClick={() => setModal(false)}>
