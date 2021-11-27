@@ -140,7 +140,6 @@ export const removeABookmarkFromTweets = (data) => async (dispatch) => {
 
   if (response.ok) {
     const bookmark_id = await response.json();
-    console.log("INSIDE TWEET REDUCER");
     dispatch(removeBookmark(data));
   }
 };

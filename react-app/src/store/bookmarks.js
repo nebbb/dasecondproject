@@ -30,7 +30,6 @@ export const removeBookmarkFromBookmark = (data) => async (dispatch) => {
 
   if (response.ok) {
     const bookmark_id = await response.json();
-    console.log("INSIDE BOOKMARK REDUCER");
 
     dispatch(removeTheBookmark2(data));
   }

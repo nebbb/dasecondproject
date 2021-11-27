@@ -7,7 +7,6 @@ const load = (notifications) => ({
 
 export const loadTheNotifications = (data) => async (dispatch) => {
   const response = await fetch(`/api/notifications/all/${data["user_id"]}`);
-  console.log("POP");
 
   if (response.ok) {
     const notifications = await response.json();

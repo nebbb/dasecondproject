@@ -87,7 +87,6 @@ export const changeProfileData = (formData) => async (dispatch) => {
 
   if (response.ok) {
     const returnData = await response.json();
-    console.log(returnData);
     // dispatch(updateUserProfile(user["user"]));
   }
 };
