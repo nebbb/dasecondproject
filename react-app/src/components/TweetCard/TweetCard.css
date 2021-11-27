@@ -132,7 +132,7 @@
   background: rgb(28, 51, 70);
 }
 .tweet__card--delete__container {
-  display: none !important;
+  display: none;
   position: fixed;
   top: 0;
   right: 0;

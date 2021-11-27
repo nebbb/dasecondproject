@@ -27,6 +27,10 @@ export default function HomeTweets({ tweets, user }) {
     return () => document.body.removeEventListener("click", removeModal);
   }, []);
 
+  useEffect(() => {
+    console.log(selectedTweet);
+  }, [selectedTweet]);
+
   function uploadTweet() {
     const tweet = {
       user_id: user.id,

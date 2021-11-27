@@ -54,7 +54,3 @@ body {
 .emoji-picker-react input.emoji-search {
   color: #000 !important;
 }
-
-.tweet__card--delete__container {
-  display: none!;
-}
