@@ -14,21 +14,8 @@ export default function MessageSection({ channel, user, setModal }) {
   const messages = useSelector((state) => Object.values(state.messages));
   const [messageInput, setMessageInput] = useState("");
   const otherUser = channel?.user_id.id === user.id ? "user_id2" : "user_id";
-  const [prevRoom, setPrevRoom] = useState(channel?.id);
+  const [prevRoom, setPrevRoom] = useState(0);
   const [liveMessages, setLiveMessages] = useState([]);
-
-  const onEmojiClick = (event, emojiObject) => {
-    setMessageInput((oldText) => (oldText += emojiObject.emoji));
-  };
-
-  useEffect(() => {
-    dispatch(loadTheMessages({ channel_id: channel?.id }));
-  }, [channel, dispatch]);
-
-  function scrollToBottom() {
-    const scrollable = document.querySelector(".message__section--wrapper");
-    scrollable.scrollTop = scrollable.scrollHeight;
-  }
 
   useEffect(() => {
     socket = io();
@@ -56,6 +43,19 @@ export default function MessageSection({ channel, user, setModal }) {
     socket.emit("join", { room: newRoom });
   };
 
+  const onEmojiClick = (event, emojiObject) => {
+    setMessageInput((oldText) => (oldText += emojiObject.emoji));
+  };
+
+  useEffect(() => {
+    dispatch(loadTheMessages({ channel_id: channel?.id }));
+  }, [channel, dispatch]);
+
+  function scrollToBottom() {
+    const scrollable = document.querySelector(".message__section--wrapper");
+    scrollable.scrollTop = scrollable.scrollHeight;
+  }
+
   const sendChat = () => {
     if (messageInput.length > 0) {
       socket.send({
@@ -78,10 +78,6 @@ export default function MessageSection({ channel, user, setModal }) {
     dispatch(postAMessage(data));
     setMessageInput("");
     setEmojiBtn(false);
-    // :(
-    setTimeout(() => {
-      scrollToBottom();
-    }, 200);
   }
 
   if (!channel) {
