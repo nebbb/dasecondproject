@@ -5,8 +5,8 @@ import os
 # configure cors_allowed_origins
 if os.environ.get('FLASK_ENV') == 'production':
     origins = [
-        'http://aa-twitta.herokuapp.com/',
-        'https://aa-twitta.herokuapp.com/'
+        'http://aa-twitta.herokuapp.com',
+        'https://aa-twitta.herokuapp.com'
     ]
 else:
     origins = "*"
