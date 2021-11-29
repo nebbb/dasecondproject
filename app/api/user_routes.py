@@ -3,6 +3,7 @@ from flask_login import login_required
 from app.models import db, User, Follow, Tweet, Like, Bookmark
 from app.models.models import Comment
 
+
 user_routes = Blueprint('users', __name__)
 
 
@@ -88,8 +89,35 @@ def get_a_user(id):
 @user_routes.route('/follow')
 @login_required
 def load_users():
-    users = User.query.limit(3).all()
+    users = User.query.limit(4).all()
     return {'users': [user.to_dict() for user in users]}
+
+@user_routes.route('/follow/users/<int:id>')
+@login_required
+def load_follow_users(id):
+    follows = db.session.query(Follow).filter(Follow.sender==id).all()
+    follows_ids = []
+    for follow in follows:
+        follow_dict = follow.to_dict()
+        follows_ids.append(follow_dict["reciever"])
+
+    users = User.query.all()
+
+    num = 0
+    dynamic_array = []
+
+    for user in users:
+        user_dict = user.to_dict()
+
+        if num <= 3:
+            if user_dict["id"] not in follows_ids:
+                if user_dict["id"] is not id:
+                    dynamic_array.append(user_dict)
+                    num += 1
+
+
+
+    return {'users': dynamic_array}
 
 
 @user_routes.route('/<int:id>')

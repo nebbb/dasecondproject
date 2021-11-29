@@ -33,7 +33,7 @@ export default function TweetCard({
   const alert = useAlert();
   const history = useHistory();
   const dispatch = useDispatch();
-  const [editInput, setEditInput] = useState("");
+  const [editInput, setEditInput] = useState(tweet["tweet"]);
 
   const tweetUserLike =
     tweet["like_array"].find(
@@ -115,7 +115,9 @@ export default function TweetCard({
     } else {
       dispatch(updateTweet(data));
     }
-    setEditInput("");
+    document.querySelector(
+      `.tweet__card--edit__container-${tweet.id}`
+    ).style.display = "none";
     return;
   }
 
@@ -187,9 +189,10 @@ export default function TweetCard({
       >
         <div className="tweet__card--delete--modal">
           <h3>Edit Tweet</h3>
-          <form onSubmit={updateATweetFun}>
+          <form onSubmit={updateATweetFun} className="edit__form-modal">
             <input
               placeholder="Edit tweet"
+              spellCheck="false"
               value={editInput}
               onChange={(e) => setEditInput(e.target.value)}
             />

@@ -37,6 +37,7 @@ export default function SearchBar() {
         <div className="search__bar-results--container">
           {results.map((result) => (
             <div
+              key={result?.id}
               className="result--single__container"
               onClick={() => {
                 history.push(`/profile/${result.id}`);

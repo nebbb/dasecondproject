@@ -14,6 +14,15 @@ export const loadHomeUsers = () => async (dispatch) => {
   }
 };
 
+export const loadDynamicUsers = (id) => async (dispatch) => {
+  const response = await fetch(`/api/users/follow/users/${id}`);
+
+  if (response.ok) {
+    const users = await response.json();
+    dispatch(load(users["users"]));
+  }
+};
+
 const usersReducer = (state = {}, action) => {
   switch (action.type) {
     case LOAD:

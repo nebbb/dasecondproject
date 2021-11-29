@@ -6,6 +6,7 @@ import RightSideBar from "../RightSideBar";
 import TweetDetails from "../TweetDetails";
 import { loadSingleTweet } from "../../store/tweets";
 import { loadHomeUsers } from "../../store/users";
+import { loadDynamicUsers } from "../../store/users";
 import "./TweetPage.css";
 
 export default function TweetPage() {
@@ -16,7 +17,9 @@ export default function TweetPage() {
   const tweet = useSelector((state) => state.tweets);
 
   useEffect(() => {
-    dispatch(loadSingleTweet(tweetId)).then(() => dispatch(loadHomeUsers()));
+    dispatch(loadSingleTweet(tweetId)).then(() =>
+      dispatch(loadDynamicUsers(user.id))
+    );
   }, [tweetId]);
 
   return (

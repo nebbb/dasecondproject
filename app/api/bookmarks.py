@@ -17,7 +17,7 @@ def get_the_bookmarks(user_id):
         bookmark_dict = bookmark.to_dict()
         tweet = Tweet.query.get(bookmark_dict["tweet_id"])
         tweet_dict = tweet.to_dict()
-        user = User.query.get(bookmark_dict["user_id"])
+        user = User.query.get(tweet_dict["user_id"])
         like_array = db.session.query(Like).filter(Like.tweet_id==tweet_dict["id"]).all()
         comment_array = db.session.query(Comment).filter(Comment.tweet_id==tweet_dict["id"]).all()
         bookmark_array = db.session.query(Bookmark).filter(Bookmark.tweet_id==tweet_dict["id"]).all()

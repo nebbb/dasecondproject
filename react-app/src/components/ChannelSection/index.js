@@ -37,6 +37,7 @@ export default function ChannelSection({
             channel={channel}
             user={user}
             setSelectedChannel={setSelectedChannel}
+            key={channel?.id}
           />
         ))}
       </div>

@@ -13,6 +13,7 @@
   padding: 2rem;
   transition: 150ms background;
   cursor: pointer;
+  user-select: none;
 }
 .notification__card--container:hover {
   background: rgb(25, 39, 52);
@@ -32,4 +33,25 @@
 .notification__card--container-right span {
   font-size: 1.5rem;
   color: #fff;
+}
+.notification-none__text {
+  color: #fff;
+  margin-top: 0.6rem;
+}
+.notification__svg {
+  margin-left: auto;
+}
+.notification-container {
+  display: flex;
+  align-self: center;
+  gap: 1rem;
+}
+.notification-container {
+  font-size: 2rem;
+  margin: 3rem;
+  user-select: none;
+}
+.notification-container img {
+  width: 4rem;
+  height: 4rem;
 }

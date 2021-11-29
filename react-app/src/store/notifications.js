@@ -1,8 +1,14 @@
 const LOAD = "notification/LOAD";
+const REMOVE = "notifications/REMOVE";
 
 const load = (notifications) => ({
   type: LOAD,
   notifications,
+});
+
+const remove = (id) => ({
+  type: REMOVE,
+  id,
 });
 
 export const loadTheNotifications = (data) => async (dispatch) => {
@@ -14,6 +20,20 @@ export const loadTheNotifications = (data) => async (dispatch) => {
   }
 };
 
+export const removeNotification = (notificationId) => async (dispatch) => {
+  const response = await fetch(`/api/notifications/remove/${notificationId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (response.ok) {
+    const notification_id = await response.json();
+    dispatch(remove(notification_id["notification_id"]));
+  }
+};
+
 const notificationsReducer = (state = {}, action) => {
   switch (action.type) {
     case LOAD:
@@ -22,6 +42,10 @@ const notificationsReducer = (state = {}, action) => {
         newState[notification.id] = notification;
       }
       return newState;
+    case REMOVE:
+      const newNotifs = { ...state };
+      delete newNotifs[action.id];
+      return newNotifs;
     default:
       return state;
   }

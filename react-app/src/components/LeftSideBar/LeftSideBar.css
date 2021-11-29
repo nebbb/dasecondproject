@@ -105,3 +105,24 @@ a span svg,
   color: rgb(136, 153, 166);
   font-size: 1.4rem;
 }
+.notification__menu {
+  position: relative;
+}
+.notification__count {
+  position: absolute;
+  top: 10%;
+  left: 7%;
+  width: 25px;
+  height: 25px;
+  background: #1d9bf0;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: circle(40%);
+}
+.notification__count:hover {
+  background: #1d9bf0 !important;
+}

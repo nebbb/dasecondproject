@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required
-from app.models import db, User, Like, Tweet, Comment, Bookmark
+from app.models import db, User, Like, Tweet, Comment, Bookmark, Notification
 from datetime import datetime as dt
 
 
@@ -49,6 +49,21 @@ def post_a_like():
     tweet_dict["like_array"] = [like.to_dict() for like in like_array]
     tweet_dict["comment_array"] = comment_dict
     tweet_dict["bookmark_array"] = [bookmark.to_dict() for bookmark in bookmark_array]
+
+
+    the_user = User.query.get(data["user_id"])
+    the_user_dict = the_user.to_dict()
+
+    the_tweet = Tweet.query.get(data["tweet_id"])
+    the_tweet_dict = the_tweet.to_dict()
+
+    the_real_user = User.query.get(the_tweet_dict["user_id"])
+    the_real_user_dict = the_real_user.to_dict()
+
+    new_notif = Notification(reciever=the_real_user_dict["id"], sender=data["user_id"], message=f'{the_user_dict["username"]} liked your tweet.', link=f'/status/{data["tweet_id"]}')
+
+    db.session.add(new_notif)
+    db.session.commit()
 
     return {"tweet": tweet_dict}
 

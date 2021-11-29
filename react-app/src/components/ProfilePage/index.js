@@ -7,6 +7,7 @@ import { loadSingleUser } from "../../store/user";
 import LeftSideBar from "../LeftSideBar";
 import RightSideBar from "../RightSideBar";
 import { useParams } from "react-router";
+import { loadDynamicUsers } from "../../store/users";
 
 export default function ProfilePage() {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ export default function ProfilePage() {
 
   useEffect(() => {
     dispatch(loadSingleUser({ user_id: profileId })).then(() =>
-      dispatch(loadHomeUsers())
+      dispatch(loadDynamicUsers(user.id))
     );
   }, [profileId]);
   return (

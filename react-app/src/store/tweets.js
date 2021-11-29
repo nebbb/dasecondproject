@@ -109,6 +109,7 @@ export const addAComment = (formData) => async (dispatch) => {
 
   if (response.ok) {
     const comment = await response.json();
+    console.log(111111111111, comment["comment"]);
 
     dispatch(addComment(comment["comment"]));
   }

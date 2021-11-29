@@ -29,6 +29,10 @@ def post_a_comment():
         sent_date = dt.now()
     )
 
+    db.session.add(comment)
+    db.session.commit()
+
+
     comment_dict = comment.to_dict()
 
 
@@ -42,7 +46,6 @@ def post_a_comment():
 
     new_notif = Notification(reciever=the_user_dict["id"], sender=comment_dict["user_id"], message=f'{the_commenter_dict["username"]} commented on your tweet.', link=f'/status/{comment_dict["tweet_id"]}')
 
-    db.session.add(comment)
     db.session.add(new_notif)
     db.session.commit()
 

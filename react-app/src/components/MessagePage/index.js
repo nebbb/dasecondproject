@@ -71,6 +71,7 @@ export default function MessagePage() {
                   <div
                     className="single-channel-find"
                     onClick={() => makeAChannel(user["user"].id)}
+                    key={user?.id}
                   >
                     <div className="single-channel-find--left">
                       <img alt="profile-pic" src={user["user"].profile_pic} />

@@ -307,7 +307,7 @@ export default function SingleTweetCard({ tweet, user }) {
       <div className="single-tweet-card--bottom--comments">
         {tweet?.["comment_array"]?.length > 0 &&
           tweet?.["comment_array"].map((comment) => (
-            <CommentCard comment={comment} user={user} />
+            <CommentCard comment={comment} user={user} key={comment?.id} />
           ))}
         {/* {tweet?.["comment_array"]?.length > 0 &&
           tweet?.["comment_array"]

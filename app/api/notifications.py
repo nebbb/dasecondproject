@@ -7,10 +7,10 @@ from datetime import datetime as dt
 notification_routes = Blueprint("notifications", __name__)
 
 
-# Get Channels For User
+# Get Notificatons For User
 @notification_routes.route('/all/<int:user_id>', methods =['GET'])
 @login_required
-def get_the_channels(user_id):
+def get_the_notifications(user_id):
     notifications = db.session.query(Notification).filter(Notification.reciever == user_id).all()
     notification_loop = []
 
@@ -25,3 +25,15 @@ def get_the_channels(user_id):
 
 
     return {"notifications": notification_loop}
+
+
+
+# Remove a notification
+@notification_routes.route('/remove/<int:id>', methods =['DELETE'])
+@login_required
+def remove_the_notification(id):
+    db.session.query(Notification).filter(Notification.id==id).delete()
+    db.session.commit()
+
+
+    return {"notification_id": id}

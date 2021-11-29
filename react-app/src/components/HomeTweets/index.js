@@ -199,6 +199,7 @@ export default function HomeTweets({ tweets, user }) {
             setSelectedTweet={setSelectedTweet}
             tweet={tweet}
             user={user}
+            key={tweet?.id}
           />
         ))}
     </div>

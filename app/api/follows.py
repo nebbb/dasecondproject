@@ -1,12 +1,12 @@
 from flask import Blueprint, request
 from flask_login import login_required
-from app.models import db, User, Follow
+from app.models import db, User, Follow, Notification
 
 
 follow_routes = Blueprint("follows", __name__)
 
 
-# POST Tweet
+# POST Follow
 @follow_routes.route('/add', methods =['POST'])
 @login_required
 def post_a_follow():
@@ -20,10 +20,18 @@ def post_a_follow():
 
     follow_dict = follow.to_dict()
 
+    the_user = User.query.get(data["sender"])
+    the_user_dict = the_user.to_dict()
+
+    new_notif = Notification(reciever=data["reciever"], sender=data["sender"], message=f'{the_user_dict["username"]} has started following you.', link=f'/profile/{data["sender"]}')
+
+    db.session.add(new_notif)
+    db.session.commit()
+
     return {"follow": follow_dict}
 
 
-# DELETE Tweet
+# DELETE Follow
 @follow_routes.route('/delete/<int:follow_id>', methods =['DELETE'])
 @login_required
 def delete_a_like(follow_id):

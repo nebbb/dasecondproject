@@ -26,7 +26,12 @@ export default function FollowUserCard({ user }) {
         </div>
       </div>
       <div className="follow__user-right">
-        <button className="follow__card-btn">Follow</button>
+        <button
+          className="follow__card-btn"
+          onClick={() => history.push(`/profile/${user.id}`)}
+        >
+          Profile
+        </button>
       </div>
     </div>
   );

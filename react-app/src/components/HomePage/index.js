@@ -4,6 +4,7 @@ import "./HomePage.css";
 import { useSelector, useDispatch } from "react-redux";
 import { loadHomeTweets } from "../../store/tweets";
 import { loadHomeUsers } from "../../store/users";
+import { loadDynamicUsers } from "../../store/users";
 import LeftSideBar from "../LeftSideBar";
 import RightSideBar from "../RightSideBar";
 
@@ -15,7 +16,7 @@ export default function HomePage() {
   const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
-    dispatch(loadHomeTweets()).then(() => dispatch(loadHomeUsers()));
+    dispatch(loadHomeTweets()).then(() => dispatch(loadDynamicUsers(user.id)));
   }, [dispatch]);
   return (
     <div className="home__page--container">

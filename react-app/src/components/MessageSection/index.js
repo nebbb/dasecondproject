@@ -35,6 +35,10 @@ export default function MessageSection({ channel, user, setModal }) {
     setPrevRoom(channel?.id);
   }, [channel]);
 
+  useEffect(() => {
+    if (channel) dispatch(loadTheMessages({ channel_id: channel?.id }));
+  }, [channel, dispatch]);
+
   const leaveRoom = (oldRoom) => {
     socket.emit("leave", { room: oldRoom });
   };
@@ -43,18 +47,14 @@ export default function MessageSection({ channel, user, setModal }) {
     socket.emit("join", { room: newRoom });
   };
 
-  const onEmojiClick = (event, emojiObject) => {
-    setMessageInput((oldText) => (oldText += emojiObject.emoji));
-  };
-
-  useEffect(() => {
-    dispatch(loadTheMessages({ channel_id: channel?.id }));
-  }, [channel, dispatch]);
-
   function scrollToBottom() {
     const scrollable = document.querySelector(".message__section--wrapper");
     scrollable.scrollTop = scrollable.scrollHeight;
   }
+
+  const onEmojiClick = (event, emojiObject) => {
+    setMessageInput((oldText) => (oldText += emojiObject.emoji));
+  };
 
   const sendChat = () => {
     if (messageInput.length > 0) {
@@ -106,13 +106,19 @@ export default function MessageSection({ channel, user, setModal }) {
           {messages.map((message) => {
             if (message.sender.id !== channel[otherUser]?.id) {
               return (
-                <div className="message--container move-to-right">
+                <div
+                  className="message--container move-to-right"
+                  key={message?.id}
+                >
                   <span>{message.message}</span>
                 </div>
               );
             } else {
               return (
-                <div className="message--container message--container--left">
+                <div
+                  className="message--container message--container--left"
+                  key={message?.id}
+                >
                   <img
                     src={message.sender.profile_pic}
                     alt="profile-pic"
@@ -130,6 +136,7 @@ export default function MessageSection({ channel, user, setModal }) {
               return (
                 <div
                   className={`message--container move-to-right d-${message.sender.id}`}
+                  key={message?.id}
                 >
                   <span>{message.message}</span>
                 </div>
@@ -137,6 +144,7 @@ export default function MessageSection({ channel, user, setModal }) {
             } else {
               return (
                 <div
+                  key={message?.id}
                   className={`message--container message--container--left d-${message.sender.id}`}
                 >
                   <img

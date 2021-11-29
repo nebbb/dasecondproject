@@ -50,12 +50,6 @@ function App() {
       <AlertProvider template={AlertTemplate} {...options}>
         <Switch>
           <Route path="/login" exact={true}>
-            <LoginForm />
-          </Route>
-          <Route path="/sign-up" exact={true}>
-            <SignUpForm />
-          </Route>
-          <Route path="/logintest" exact={true}>
             <LoginPage />
           </Route>
           <ProtectedRoute path="/" exact={true}>

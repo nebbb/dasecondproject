@@ -27,6 +27,9 @@ export default function CommentCard({ comment, user }) {
       comment_id: comment.id,
       id: comment.id,
     };
+    console.log(data);
+    console.log(comment);
+
     dispatch(deleteCommentTweet(data));
   }
 

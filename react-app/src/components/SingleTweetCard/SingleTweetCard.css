@@ -41,6 +41,7 @@
 }
 .single-tweet-user-tweet-content p {
   font-size: 2.3rem;
+  overflow-wrap: break-word;
 }
 .single-tweet-user-tweet-content span {
   color: rgb(136, 153, 166);

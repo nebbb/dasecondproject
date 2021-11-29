@@ -6,6 +6,7 @@ import BookmarkSection from "../BookmarkSection";
 import LeftSideBar from "../LeftSideBar";
 import RightSideBar from "../RightSideBar";
 import { loadHomeUsers } from "../../store/users";
+import { loadDynamicUsers } from "../../store/users";
 
 export default function BookmarkPage() {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ export default function BookmarkPage() {
 
   useEffect(() => {
     dispatch(loadBookmarks({ user_id: user.id })).then(() =>
-      dispatch(loadHomeUsers())
+      dispatch(loadDynamicUsers(user.id))
     );
   }, []);
 
