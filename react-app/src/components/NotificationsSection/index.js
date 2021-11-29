@@ -20,7 +20,6 @@ export default function NotificationsSection({ notifications }) {
           (notification) => notification.sender !== notification.reciever
         )?.length <= 0 ? (
           <div className="notification-container">
-            {/* <span>🚫</span> */}
             <img src="https://img.icons8.com/cute-clipart/64/000000/sad.png" />
             <h3 className="notification-none__text">No new notifications</h3>
           </div>
