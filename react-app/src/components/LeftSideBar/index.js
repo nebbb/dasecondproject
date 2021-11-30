@@ -22,8 +22,10 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/session";
 import { loadTheNotifications } from "../../store/notifications";
+import { useHistory } from "react-router";
 
 export default function LeftSideBar({ user }) {
+  const history = useHistory();
   const notifications = useSelector((state) =>
     Object.values(state.notifications)
   );
@@ -114,7 +116,7 @@ export default function LeftSideBar({ user }) {
           </span>
         </a>
       </nav>
-      <button>Tweet</button>
+      <button onClick={() => history.push("/")}>Tweet</button>
       <footer className="leftside__footer">
         <img
           src={user.profile_pic}

@@ -294,3 +294,8 @@ button.login-btn-sign-in {
   text-decoration: none;
   color: #72828f;
 }
+.error-map {
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+  color: #fff;
+}

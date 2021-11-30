@@ -3,3 +3,17 @@
   display: flex;
   margin: 0 auto;
 }
+.settings__btn-main {
+  transition: all 150ms !important;
+}
+
+.settings__btn-main:hover {
+  transform: translateY(-2px);
+}
+.settings__btn-main:active {
+  transform: translateY(2px);
+}
+.settings__btn-main:disabled,
+.settings__btn-main[disabled] {
+  background-color: #b31b1b !important;
+}

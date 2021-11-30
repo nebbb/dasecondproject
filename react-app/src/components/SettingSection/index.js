@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { updateProfile } from "../../store/user";
 import "./SettingSection.css";
 import { useDispatch } from "react-redux";
+import { useAlert } from "react-alert";
 
 export default function SettingSection({ name, description, user }) {
   const dispatch = useDispatch();
+  const alert = useAlert();
   const [inputName, setInputName] = useState(name);
   const [inputDescription, inputSetDescription] = useState(description);
 
@@ -14,7 +16,9 @@ export default function SettingSection({ name, description, user }) {
       name: inputName,
       description: inputDescription,
     };
-    dispatch(updateProfile(data));
+    dispatch(updateProfile(data)).then(() =>
+      alert.show("Name and description saved")
+    );
   }
 
   return (
@@ -41,7 +45,13 @@ export default function SettingSection({ name, description, user }) {
             onChange={(e) => inputSetDescription(e.target.value)}
           />
         </div>
-        <button onClick={updateTheProfile}>Confirm</button>
+        <button
+          className="settings__btn-main"
+          onClick={updateTheProfile}
+          disabled={inputName.length + inputDescription.length === 0}
+        >
+          Confirm
+        </button>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import "./ProfilePictureEditSection.css";
 import { changeProfileData } from "../../store/user";
 import { useDispatch } from "react-redux";
 import { loadSingleUser } from "../../store/user";
+import { useAlert } from "react-alert";
 import { authenticate } from "../../store/session";
 
 export default function ProfilePictureEditSection({
@@ -11,6 +12,7 @@ export default function ProfilePictureEditSection({
   profile_pic,
 }) {
   const dispatch = useDispatch();
+  const alert = useAlert();
   const [currentImageURL, setCurrentImageURL] = useState("");
   const [currentImagePreviewURL, setCurrentImagePreviewURL] =
     useState(profile_pic);
@@ -35,7 +37,9 @@ export default function ProfilePictureEditSection({
       file2: currentBannerURL,
       user_id: user.id,
     };
-    dispatch(changeProfileData(data)).then(() => dispatch(authenticate()));
+    dispatch(changeProfileData(data))
+      .then(() => dispatch(authenticate()))
+      .then(() => alert.show("Profile picture & banner saved"));
   }
 
   return (
@@ -113,7 +117,9 @@ export default function ProfilePictureEditSection({
           }}
         />
       </label>
-      <button onClick={updateTheProfileData}>Confirm</button>
+      <button onClick={updateTheProfileData} className="settings__btn-main">
+        Confirm
+      </button>
     </div>
   );
 }

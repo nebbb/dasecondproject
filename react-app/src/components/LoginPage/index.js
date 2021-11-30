@@ -50,12 +50,12 @@ export default function LoginPage() {
             </div>
 
             <LoginForm />
-            <div className="non-login-inner">
+            {/* <div className="non-login-inner">
               <div className="span-container__login">
                 <span className="span-login-1">Don't have an account?</span>
                 <span className="span-login-2">Sign up</span>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       )}
@@ -91,12 +91,12 @@ export default function LoginPage() {
             </div>
 
             <SignUpForm />
-            <div className="non-login-inner">
+            {/* <div className="non-login-inner">
               <div className="span-container__login span-container__login-u">
                 <span className="span-login-1">Already have an account?</span>
                 <span className="span-login-2">Sign in</span>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       )}
