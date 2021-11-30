@@ -7,8 +7,8 @@ import { useAlert } from "react-alert";
 export default function SettingSection({ name, description, user }) {
   const dispatch = useDispatch();
   const alert = useAlert();
-  const [inputName, setInputName] = useState(name);
-  const [inputDescription, inputSetDescription] = useState(description);
+  const [inputName, setInputName] = useState(name || "");
+  const [inputDescription, inputSetDescription] = useState(description || "");
 
   function updateTheProfile() {
     const data = {

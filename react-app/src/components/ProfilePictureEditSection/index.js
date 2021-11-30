@@ -77,7 +77,7 @@ export default function ProfilePictureEditSection({
           type="file"
           accept="image/*"
           onChange={(e) => {
-            if (e.target.files !== 0) {
+            if (e.target.files.length) {
               setCurrentImagePreviewURL(URL.createObjectURL(e.target.files[0]));
             }
             setCurrentImageURL(e.target.files[0]);
@@ -108,7 +108,7 @@ export default function ProfilePictureEditSection({
           type="file"
           accept="image/*"
           onChange={(e) => {
-            if (e.target.files !== 0) {
+            if (e.target.files.length) {
               setCurrentBannerPreviewURL(
                 URL.createObjectURL(e.target.files[0])
               );
