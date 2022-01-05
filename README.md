@@ -57,7 +57,7 @@ Pixel perfect clone of [Twiiter](http://twitter.com).
 ![User DMs](https://i.imgur.com/tyAgqL9.png)
 
 * Suggested Follows
-    - Channels are full CRUD
+    - Suggested follows specifically for YOU!
 
 ![Suggested Follows](https://i.imgur.com/tegyWwW.png)
 
