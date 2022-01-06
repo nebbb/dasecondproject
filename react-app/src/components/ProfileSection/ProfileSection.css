@@ -73,7 +73,7 @@
   padding: 1.6rem 0;
   cursor: pointer;
 }
-.user-profile-menu div:hover {
+.user-profile-menu .user-tweets-container:hover {
   background: rgb(44, 54, 64);
 }
 .user-profile-menu div span {
@@ -176,4 +176,29 @@
   align-items: center;
   gap: 1rem;
   position: absolute;
+}
+.user-profile-menu .user-tweets-container {
+  position: relative;
+}
+.user-profile-menu .user-tweets-line {
+  display: none;
+  position: absolute;
+  bottom: 0;
+
+  background: #1d9bf0;
+  width: 42px;
+  border-radius: 100px;
+  padding: 0;
+  height: 3.6px;
+}
+.user-profile-menu .user-likes-line {
+  display: none;
+  position: absolute;
+  bottom: 0;
+
+  background: #1d9bf0;
+  width: 42px;
+  border-radius: 100px;
+  padding: 0;
+  height: 3.6px;
 }

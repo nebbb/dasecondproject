@@ -44,16 +44,19 @@ const bookmarksReducer = (state = {}, action) => {
       }
       return newState;
     case REMOVE_BOOK2:
-      function getTheBookmark2(object) {
-        return object["id"] === action.data.bookmark_id;
-      }
-      const oldUserData9 = { ...state };
-      const currentUserTweet9 = oldUserData9[action.data.tweet_id];
-      const currentUserTweet9Bookmarks = currentUserTweet9["bookmark_array"];
-      const bookmarkIndex3 =
-        currentUserTweet9Bookmarks.findIndex(getTheBookmark2);
-      currentUserTweet9Bookmarks.splice(bookmarkIndex3, 1);
-      return { ...state, [action.data.tweet_id]: currentUserTweet9 };
+      // function getTheBookmark2(object) {
+      //   return object["id"] === action.data.bookmark_id;
+      // }
+      // const oldUserData9 = { ...state };
+      // const currentUserTweet9 = oldUserData9[action.data.tweet_id];
+      // const currentUserTweet9Bookmarks = currentUserTweet9["bookmark_array"];
+      // const bookmarkIndex3 =
+      //   currentUserTweet9Bookmarks.findIndex(getTheBookmark2);
+      // currentUserTweet9Bookmarks.splice(bookmarkIndex3, 1);
+      // return { ...state, [action.data.tweet_id]: currentUserTweet9 };
+      const oldBookmarkState = { ...state };
+      delete oldBookmarkState[action.data.tweet_id];
+      return oldBookmarkState;
     default:
       return state;
   }

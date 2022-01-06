@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+
 .left_side_bar-container {
   flex: 1;
   max-width: 27.5rem;
@@ -125,4 +127,166 @@ a span svg,
 }
 .notification__count:hover {
   background: #1d9bf0 !important;
+}
+.wrapper {
+  background: #fff;
+  max-width: 475px;
+  width: 60rem;
+  border-radius: 15px;
+  padding: 25px 25px 15px 25px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  position: relative;
+}
+.input-box {
+  padding-top: 10px;
+  border-bottom: 1px solid #e6e6e6;
+}
+.input-box .tweet-area {
+  position: relative;
+  min-height: 130px;
+  max-height: 170px;
+  overflow-y: auto;
+}
+.tweet-area::-webkit-scrollbar {
+  width: 0px;
+}
+.tweet-area .placeholder {
+  position: absolute;
+  margin-top: -3px;
+  font-size: 22px;
+  color: #98a5b1;
+  pointer-events: none;
+}
+.tweet-area .input {
+  outline: none;
+  font-size: 17px;
+  min-height: inherit;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.tweet-area .editable {
+  position: relative;
+  z-index: 5;
+}
+.tweet-area .readonly {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  color: transparent;
+  background: transparent;
+}
+.readonly .highlight {
+  background: #fd9bb0;
+}
+.input-box .privacy {
+  color: #1da1f2;
+  margin: 15px 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 10px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.privacy:hover,
+.icons li:hover {
+  background: #e7f5fe;
+}
+.privacy i {
+  font-size: 18px;
+}
+.privacy span {
+  font-size: 15px;
+  font-weight: 600;
+  margin-left: 7px;
+}
+.bottom {
+  display: flex;
+  margin-top: 13px;
+  align-items: center;
+  justify-content: space-between;
+}
+.bottom .icons {
+  display: inline-flex;
+}
+.icons li {
+  list-style: none;
+  color: #1da1f2;
+  font-size: 20px;
+  margin: 0 2px;
+  height: 38px;
+  width: 38px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+}
+.bottom .content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bottom .counter {
+  color: #333;
+  display: none;
+  font-weight: 500;
+  margin-right: 15px;
+  padding-right: 15px;
+  border-right: 1px solid #aab8c2;
+}
+.bottom button {
+  padding: 9px 18px;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  background: #1da1f2;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.5;
+  pointer-events: none;
+  transition: background 0.2s ease;
+}
+.bottom button.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.bottom button:hover {
+  background: #0d8bd9;
+}
+.react-responsive-modal-modal {
+  background: none !important;
+  box-shadow: none !important;
+}
+.react-responsive-modal-closeButton {
+  top: 7% !important;
+  right: 4% !important;
+  position: absolute !important;
+}
+.react-responsive-modal-overlay {
+  background: rgba(91, 112, 131, 0.4) !important;
+}
+.react-responsive-modal-root {
+  top: -40% !important;
+}
+#image-tweet-pre {
+  display: none;
+}
+.image-tweet-pre {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.modal-tweet-pre-img {
+  display: block;
+  cursor: pointer;
+  height: 10rem;
+  border-radius: 0.8rem;
+  margin-top: 1rem;
 }

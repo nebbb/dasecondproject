@@ -1,10 +1,12 @@
 import React from "react";
 import "./CommentCard.css";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 import { deleteCommentTweet } from "../../store/tweets";
 
 export default function CommentCard({ comment, user }) {
   const dispatch = useDispatch();
+  const history = useHistory();
   // function showDropdown(e) {
   //   // (element x - body x) + adjustments
   //   // (element y - body y) + adjustments
@@ -27,15 +29,16 @@ export default function CommentCard({ comment, user }) {
       comment_id: comment.id,
       id: comment.id,
     };
-    console.log(data);
-    console.log(comment);
 
     dispatch(deleteCommentTweet(data));
   }
 
   return (
     <div className="single-tweet-card--comment">
-      <div className="single-tweet-comm-left">
+      <div
+        className="single-tweet-comm-left"
+        onClick={() => history.push(`/profile/${comment.user.id}`)}
+      >
         <img
           src={comment?.["user"]["profile_pic"]}
           alt="profile-pic"

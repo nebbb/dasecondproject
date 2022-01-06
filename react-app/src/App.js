@@ -17,14 +17,16 @@ import ProfilePage from "./components/ProfilePage";
 import SettingPage from "./components/SettingPage";
 import NotificationPage from "./components/NotificationPage";
 import { transitions, positions, Provider as AlertProvider } from "react-alert";
+import "react-responsive-modal/styles.css";
 import AlertTemplate from "react-alert-template-basic";
-
 import { authenticate } from "./store/session";
 
 import "./reset.css";
+import userReducer from "./store/user";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
+
   const dispatch = useDispatch();
 
   useEffect(() => {

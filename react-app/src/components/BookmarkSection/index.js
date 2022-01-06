@@ -20,18 +20,17 @@ export default function BookmarkSection({ user, bookmarks }) {
       <div>
         {bookmarks &&
           bookmarks.map((bookmark) => {
-            if (bookmark["bookmark_array"]?.length > 0) {
-              return (
-                <TweetCard
-                  user={user}
-                  tweet={bookmark}
-                  hide={true}
-                  key={bookmark?.id}
-                />
-              );
-            }
+            // if (bookmark["bookmark_array"]?.length > 0) {
+            return (
+              <TweetCard
+                user={user}
+                tweet={bookmark}
+                hide={true}
+                key={bookmark?.id}
+              />
+            );
+            // }
           })}
-        {/* {bookmarks && bookmarks.forEach((b) => console.log(b))} */}
       </div>
     </div>
   );

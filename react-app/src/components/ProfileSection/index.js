@@ -24,6 +24,24 @@ export default function ProfileSection({ user, userId, currentUser }) {
   }
 
   useEffect(() => {
+    if (pageSection === "tweets") {
+      document.querySelector(
+        ".user-profile-menu .user-tweets-line"
+      ).style.display = "block";
+      document.querySelector(
+        ".user-profile-menu .user-likes-line"
+      ).style.display = "none";
+    } else {
+      document.querySelector(
+        ".user-profile-menu .user-tweets-line"
+      ).style.display = "none";
+      document.querySelector(
+        ".user-profile-menu .user-likes-line"
+      ).style.display = "block";
+    }
+  }, [pageSection]);
+
+  useEffect(() => {
     document.body.addEventListener("click", removeModal);
     return () => document.body.removeEventListener("click", removeModal);
   }, []);
@@ -202,11 +220,19 @@ export default function ProfileSection({ user, userId, currentUser }) {
             </div>
           </div>
           <div className="user-profile-menu">
-            <div onClick={() => setPageSection("tweets")}>
+            <div
+              onClick={() => setPageSection("tweets")}
+              className="user-tweets-container"
+            >
               <span>Tweets</span>
+              <div className="user-tweets-line"></div>
             </div>
-            <div onClick={() => setPageSection("likes")}>
+            <div
+              onClick={() => setPageSection("likes")}
+              className="user-tweets-container"
+            >
               <span>Likes</span>
+              <div className="user-likes-line"></div>
             </div>
           </div>
         </div>
