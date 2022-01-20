@@ -1,6 +1,6 @@
 # Twitta - *Clone of Twitter*
 
-Initially, this project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). Backend is coded in Python and frontend is coded in JavaScript and CSS, using React/Redux. This project also features Docker implementation.
+Initially, this project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). Backend is coded in Python and frontend is coded in JavaScript and CSS, using React/Redux. This project also features Docker implementation
 
 View our [Live Website Via Heroku](https://aa-not-discord.herokuapp.com/).
 
