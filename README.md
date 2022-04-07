@@ -4,7 +4,7 @@ Initially, this project was bootstrapped with [Create React App](https://github.
 
 View our [Live Website Via Heroku](https://aa-not-discord.herokuapp.com/)
 
-View the [Wiki](https://github.com/nebbb/dasecondproject/wiki) for more project info.
+View the [Wiki](https://github.com/nebbb/dasecondproject/wiki) for more project info
 
 ![Splash Page](https://i.imgur.com/nM5Z1lE.png)
 
